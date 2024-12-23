@@ -1,0 +1,129 @@
+Two branches mainly
+ 1. Official Releases
+       - Tied to a project phase
+       - Ressult of PI Planning
+       - includes communiciation to borader audience when needed.
+ 2. Production
+       - Tied to stakeholder meetings
+       - team spirit to get  a sense of accomplishment
+       - Ahead of Conference like AGU
+       - Can be set by the team itself.
+
+
+ * CORE UI LIBRARY RELEASE
+   UI team in charge of tagging and cutting the release.
+
+ ** STEPS ( remaining to study in detail)
+
+ ** Instances Release and Delpyment
+
+ - Netlify is used for feature branch deployment.
+ - Github Actions to deploy the staging and production versions of rhe instances.
+
+ ** Need to have permission for Netlify for Deployment.
+
+ ** Need to ask about its binding with the veda-config
+
+ - Release and deployment process  and cadence process are instance based.
+ - Each instance is fork of veda-config.
+ - It is upto each instances decision to decide whether ot not and how to update the veda-ui version with a release.
+
+   
+ - (Does this mean that each (veda-ui) is instances of veda-config and each instances has the same codebases or properties
+   as that of parent but it can have its own setting to update the UI.)
+
+
+ ** Steps of Release of an instance.
+
+ 1. Release branch is created off of "develop" to update the version in the `package.json`.
+ 2. A changelog is created since the last log to add as a part of PR desc.
+ 3. QA is done in staging branch ( which is the develop branch itself). It is deployed once PR is merged in staging.
+ 4. Let stakeholders know about the content change.
+ 5. As soon as the staging deployment is finished , create a production PR.
+    - During the wait the critical bugs are addressed and some non critical ones are carried on to the next sprint.
+ 6. Once the Prod PR is merged then git release tag is created on the main branch matching the version in `package.json`
+   
+	
+ ** Quality Assurance is under construction so maybe I can chip in something to check for QA assistance .
+ ** Who are responsible for the QA task.
+ ** Does  the current code repo of veda-config represent the actual code for EarthData ( Veda Dashboard)?
+
+
+
+ ** Veda-Ui is a submodule of veda-config but it can be individually developed without having veda-config code around.
+    But if a new instance is to be created then it can be done using the veda-config.
+
+
+ ** Veda configuation consists of
+
+ There seems to be two things I understood about veda-config.
+ 
+ 1. Data Stories. 
+    - These are the stories from the completed research which tells the story about the research.
+    - Contains the research findings in a interactive manner.
+    - Seems to use custom format and engine to generate each stories.
+    - These seems to be done with the MDX Files
+       
+ 2. Data Exploration
+    
+    - These seems to be done with some type of custom engine to render different data.
+    - Can plot different data on the whole maps.
+    - As far as I understand,
+      1. the input data clearing ,
+      2. formatting in proper format,
+      3. storing it in cloud, a engine to
+      4. populate data,
+      5. engine to render data,
+      6. have multiple data displayed at single time,
+
+	 are some of the feature of the whole Data Exploration platform.
+	 
+ 3. Data Catalog
+    - This is a  collection of all the data sets tagged under different topics.
+    - This contains all the information about
+       1. the data source,
+       2. properties of the data,
+       3. researches already performed on data
+       4. along with papers published against it.
+    - A single page to filter about different topics and explore the data stories related to these topics.  
+      
+* Veda Backend
+ - Non-forked version of [[https://github.com/developmentseed/eoAPI][eoAPI]] (Earth Observation API)
+ - Contains a complete backend for [[https://stacspec.org/en/about/stac-spec/][STAC]] (Spatio Temporal Asset Catalog)  including postgreSql Database , metadata API,
+   and [[https://github.com/developmentseed/titiler][Titlier]] (a raster tiling API).( This API is developed by devseed)
+
+
+
+ * Veda Architecture
+   - Veda Config consists of MDX(Markdown in JSX : compiled to react ready JSX ) 
+     1. stories
+     2. datasets
+
+	MDX files are tailored to veda
+	The difference with the MDX file is they have a YAML FrontMatter ( is a optional section of YAML) to
+	support configuration values(id) to maintain relationship with different pieces of content.
+
+
+       *** MDX format
+       ---
+       id: content
+       name: "Some New Content"
+       ---
+
+       ## Welcome
+
+       Here's something about this site! on fire?
+
+       <SomeComponent />
+
+  - Has a custom parcel resolver which will load all the content to the veda ui.
+
+    *** parcel-resolver-veda
+    - reads all file from disk and from the YAML frontmatter it establishes the correct relationship with content.
+    - MDX content is not touched upon.
+
+    *** parcel-transformer-mdx-front
+    - Front matter code  is not supported 
+
+     
+   

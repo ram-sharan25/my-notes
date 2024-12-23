@@ -1,0 +1,4 @@
+:PROPERTIES:
+:ID:       9C0022EF-45ED-415B-8DEB-284AC3DFE66D
+:END:
+#+title: Binomial Distribution

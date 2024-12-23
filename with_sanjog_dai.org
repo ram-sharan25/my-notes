@@ -1,0 +1,25 @@
+:PROPERTIES:
+:ID:       12EEEE5D-4036-4676-9149-80DD9667AE23
+:END:
+#+title: With Sanjog Dai
+
+
+10/18
+- Make selection of measurement more highlighted when selected
+- if you can find different icon then good .
+
+- disabling other things while on the measurement mode ( filters and search)
+-
+
+- Date 12 NOV
+
+- About the error of turf
+
+- This was warning indicating that source map file for minified JS was missing for turf
+
+- It could be resolved by asking the webpack to ignore the missing source map of turf
+  But we are using create-react-app , and it had to be overridden with react-app-rewired , so that
+  the webpack config will ignore that missing source map file
+
+- It could also be resolved by adding GENERATE_SOURCEMAP = false in env file
+  which will disable to generate any source map

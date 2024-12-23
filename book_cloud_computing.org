@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       16CE525E-8B37-4BEB-86C4-47CB14910FED
+:END:
+#+title: Book: CLoud Computing
+
+[[id:][Syllabus]

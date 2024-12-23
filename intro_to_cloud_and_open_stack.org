@@ -1,0 +1,128 @@
+:PROPERTIES:
+:ID:       B1E563A7-B94E-45B0-B8AF-B8255EB80261
+:END:
+#+title: Intro to Cloud and Open Stack
+
+* Cloud/Cloud Computing :
+- Delivery of computing resources- platform , application to the datacenters
+  on demand as pay per basis over the internet.
+- Instead of owning the private servers companies can rent cloud servers to host
+  their various services.
+- makes business scalalble, effiecient, and reliable.
+
+** Public Cloud :
+- Instead of storing the data and processing them in your local desktop machine
+  you hire a company provide comuting power and   store data on their powerful
+  servers and access via the web .
+- This scheme of operation is of public cloud.
+
+
+** Private Cloud:
+- Instead of having the computation and storage on the employee desk companies
+  buy big servers where all computation and storage is handled .
+
+** Hybrid Cloud:
+- partly public partly private
+-
+
+** Cloud Service Models:
+
+*** Infrastructure as service:
+- Here cloud provider provides servers, storage, network interfaces, firewalls
+  as service to the user.
+- Servers can be collection of VM or physical computers
+- Databases stored as block or object storage and  can be accessed directly
+  or via network drive  or as object via web interface.
+- firewalls for protection of infrastructure is provided.
+- User provides OS image and the application software .
+- User is responsible to main the OS and their softwares
+- Example: Amazon Elastic Compute Cloud (EC2)
+
+*** Platform as service:
+- Cloud service provider provides for complete computing platform along with un
+  derlying hardware, server,Database ( block or object) , firewalls, network interface
+  and also OS image. The platform is use ready for the User.
+- User are to provide for the Application software and also responsible to
+  maintain the application software.
+- Provider is reponsible to main the platform that includes maintaince of servers,
+  database, maintaining firewalls, also updating the OS Images.
+- Examples: Amazon Web Services, Google App Engine , Elastic , Beanstalk
+
+*** Software as Service:
+- Cloud Service Provider provides the hardware infrastructure, server, database,
+   ,underlying OS along with the Application installedin it . It is ready to use
+  for the user.
+- The role of the user is to use th application out of the box.
+- Generally software is not bought but rented.
+- Maintainence of platform and software fall under the responsibility of cloud
+  provider.
+- Example :
+  1. Dropbox
+  2. Microsoft Office 365
+
+
+*** Intermediate Cloud Offerring:
+- Provider which provides SaaS  PaaS ans IaaS operation as servicew offering
+- Salesforce provides platform for developers to add on the main applications
+  and also salesforce as software offerring.
+- Microsoft Azure provides both IAAS ans PAAS as offerring.
+
+*** Why Cloud ? Why not Cloud ?
+1. Is cloud necessary ?
+2. Is it better to stay unclouded ?
+3. Is it viable to maintain private cloud ?
+4. Should tranfer to public cloud ?
+
+*** Scenarios :
+- Public Cloud Advantages :
+  - at starting of the business its always better to use public cloud , if a platform
+    requires cloud services
+  - if a platform requires than public cloud is better choice as it becomes easy to
+    scale, system is more reliable , no other maintainence, no additional staff
+    , no extra financial burden to develop own facility buy servers.
+  - Also more security in public cloud , bugs  and vulnerability are identified
+    and patche applied periodically, physically more secured, backups at multiple
+    locations , easy to scale at a click of a button .
+  - proper security check for the cloud admins.
+  - Security Assestment and certifications.
+  - regulations of government.
+
+
+- Private Cloud Advantage:
+  - if business is big enough then it is better to host on private cloud:
+  - better end to end control
+  - more realiable
+  - efficient systems
+  - less cost on long runs.
+  - improved user experience.
+
+- Cons of Public Cloud :
+  - Application may not require thee scalable.
+  - May be difficult  require or organize the application to make it ready for
+    the cloud
+  - Even if it is possible to transfer it may not be viable as cost wise, maybe
+    significant cost.
+  - Security is under the cloud responsibility which my be a risk for your
+    application.
+  - Data may being mined
+  - Security admin may not be trusted.
+  - Physical location of data storage may be in foreign countries ( may not be
+    firendly to own country).
+  - How can it be ensured that deleted is always deleted ?
+  - Data breach notification ?
+
+*** Cloud Providers:
+- Amazon Web Services
+- Microsoft Azure
+- Verizon Terremark
+- Google Compute Engine
+
+***
+
+***
+
+*** Docker Container :
+- A docker is different from the virtual machine that it doesnot contain a
+  operating system
+
+***

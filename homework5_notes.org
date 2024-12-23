@@ -1,0 +1,96 @@
+:PROPERTIES:
+:ID:       6ADE6FA6-F783-47A5-961C-F2C6A4B0716E
+:END:
+#+title: Homework5 notes
+
+* Using PCA to reduce the dimension of the data
+:PROPERTIES:
+:ID:       0CC8C9C7-45F5-470C-B953-2ABA1516F07C
+:END:
+
+
+* Encoding of data :
+[[https://machinelearningmastery.com/one-hot-encoding-for-categorical-data/][data encoding]]
+- While encoding the ordinal variables, their values maynot be equally spaced.
+- Here, we use normal ordinal encoding but , to fine tune the data , this
+  can be done , to give different values for entries of job and education .
+-
+
+- one hot encoding seems to perform better for the data
+
+
+* PCA
+- Since there are 20 attributes to  data
+- Applying PCA on the the data directly is not possible as it contains categorical
+  values to it also.
+- Trying to use encoding ( ordinal encoding and one hot encoding ) to transform
+  the data into discrete values.
+- But this is not showing a satisfactory result as it is showing a discrete
+  lines for the data.
+- Using PCA on the dicrete data doesnot perform well and maynot provide
+  the meaningful output for the data.
+
+- [[https://www.linkedin.com/advice/0/how-do-you-handle-categorical-ordinal#:~:text=Principal%20component%20analysis%20(PCA)%20and,for%20categorical%20and%20ordinal%20variables.][handle categorical data for PCA]]
+  - cited from here : For example, the standard PCA method, which uses the eigenvalue
+    decomposition of the correlation matrix, may not work well for binary or nominal
+    variables, as it may produce negative factor loadings or non-orthogonal factors.
+    Instead, you can use the multiple correspondence analysis (MCA) method, which
+    is a variant of PCA that can handle multiple categorical variables.
+
+  -
+- [[https://staskolenikov.net/talks/Gustavo-Stas-PCA-generic.pdf][Source]]
+
+- Discrete data includes :
+  - 1: Count data
+  - 2: Nominal data ( like gender, industry ) which is present in the following
+       problem ( Nominal columns in the present data are : married/unmarried, contact
+       day of week, month)
+  - 3: Ordinal data : Data with inherent ordering ( Ordinal columns in the
+    data are : Job, education
+  - 4: Binary Data : Data having either Yes or no values : ( in this dataset
+    the binary columns are : default(credit default) , housing(has housing loan)
+    loan( has personal loan)
+- Ordinary PCA ignore the discreteness of the data.
+- Filmer Peitchett peocedure: break down cateogories into dummy variables for Nominal
+  Variables
+- polychoric PCA: use
+  the polychoric correlation matrix : This is for ordinal variables
+- tetrachoric correlation for ordinal variables
+- Cramer's V for Nominal Variable.
+
+** Using PCA
+- First scale the train and test  data using standard scaler .
+- Then fit the data to PCA .
+- using the same transform both train and test and test data.
+- then use the classification model to classify the data
+
+
+*** Using PCA Cons:
+- PCA is normally used for continuous values , using covariance between the columns
+  and eigen values of the columns.
+-
+
+** Proportion of Variance
+- This gives the measure of the variance contained in each component of the PCA
+- Using the discrete features for component of 3 ,
+  - variance score was
+  - Individual Variance Score [0.62619614 0.33141647 0.04105221]
+  - Cumulative Variance Score [0.62619614 0.95761261 0.99866482]
+
+* MCA :
+- For categoric dat a MCA is a better approach than the PCA . from the above source
+
+- But the metrices of the model is not much changed after applying the
+  MCA to the data .
+
+- Though MCA in this library has one_hot_encoding inside the library
+  but it was not performing better than providing the encoded data .
+
+- Kernel PCA with degree 2 and linear PCA seems working good for this dataset
+# TODO
+
+
+
+**
+
+**

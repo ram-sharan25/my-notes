@@ -1,0 +1,32 @@
+:PROPERTIES:
+:ID:       38628E09-9259-4270-9F9D-CD115F6E1F29
+:END:
+#+title: Model Visualization
+
+
+Resources : https://neptune.ai/blog/visualization-in-machine-learning
+
+
+- Visualize the model , data , its performance metrices
+
+* Objectives
+- Model structure visualization: This helps to represents the complex models
+  like deep neural networks, SVM, in a graphical form so that it can easily
+  be comprehended by a human.
+  Also the flow of data shown in these helps to get the intuitive understanding
+  of how the model works.
+- Visualizing Performance Metrices: After training the model , different performance
+  metrices are calculated to see how well the model performed on the data.
+  These metrices shows how well model defines the data and analysing these metrices
+  gives ideas for improvement of the model.
+- Comparative Model Analysis: After training different models for  the same set of
+  data and visualizing the metrices of the models. One can compare and choose the
+  best model tha most correctly represents the data.
+- Feature Importance: Among the available features it is not necessary that all the
+  features equally contribute for the result. Finding the most important feature
+  make the model more interpretable. For that task feature importance plot can be
+  made.
+- Interpretability: As machine learning models are comples mathematical tools
+  that tries to  represents the real world data. Visualizing the model helps to
+  see intrepret the model to find out the relationship between data and the output.
+- Communiciation:

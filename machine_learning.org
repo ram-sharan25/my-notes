@@ -1,0 +1,14 @@
+:PROPERTIES:
+:ID:       B20293CD-0E4A-4F03-9BBA-26D3F79F4045
+:END:
+
+- Based on the data and learning .
+
+- If the labelled data is provided then it is supervised learning.
+
+
+- If the lebelled data not provided then unsupervised learning.
+
+- Data also  can be  Continuous , Discrete Data , ff
+d
+rf

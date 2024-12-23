@@ -1,0 +1,59 @@
+:PROPERTIES:
+:ID:       4FAFE045-8897-4EDC-9C5C-FD8F328339E4
+:END:
+#+title: Resuable Workflow
+
+
+
+#+BEGIN_EXAMPLE
+.github/workflows/
+├── reusable/
+│   ├── set-environment.yml
+│   │   └── Handles: staging/production environment setup
+│   │
+│   ├── validate-secrets.yml
+│   │   └── Handles: checking required secrets/variables
+│   │
+│   ├── build.yml
+│   │   └── Handles:
+│   │       - Node setup (with/without nvmrc)
+│   │       - npm/yarn installation
+│   │       - Environment variables
+│   │       - Build commands
+│   │       - Artifact upload
+│   │
+│   └── deploy.yml
+│       └── Handles:
+│           - AWS credentials
+│           - S3 sync
+│           - CloudFront invalidation
+│
+├── projects/
+    ├── emit-deploy.yml
+    ├── goes-deploy.yml
+    ├── urban-deploy.yml
+    ├── nist-deploy.yml
+    └── noaa-deploy.yml
+
+
+#+END_EXAMPLE
+
+- Reusable workflows alone don't directly support deploying multiple
+  projects at once - they're designed to be called for a single execution.
+- We may want to deploy multiple projects from this repo at once. So this may
+  not be totally applicable in our case .
+-
+#+BEGIN_EXAMPLE
+.github/workflows/
+├── base/
+│   ├── set-environment.yml
+│   ├── build.yml
+│   └── deploy.yml
+│
+├── projects/
+│   ├── emit.yml
+│   ├── goes.yml
+│   └── urban.yml
+│
+└── deploy-multiple.yml
+#+END_EXAMPLE

@@ -1,0 +1,46 @@
+:PROPERTIES:
+:ID:       A63EDC5E-AB5C-42B8-8B19-93A10A62462B
+:END:
+#+title: NewsGroup 20
+
+* Performing Classification task on the NewsGroup 20
+
+[[https://colab.research.google.com/drive/1YigTrA951RwSBuhyTo5PEhF5BdfjPJmh?authuser=4#scrollTo=VqRcuK6LqCO1]:[Colab Link]]
+
+** Loading and Exploring the data
+- First load the data.
+- Here the sklearn has the data and it is imported.
+- Get the training data from the dataset
+- As we are only doing a two class classification we are
+  aggregating the classes  into two classes so that several
+  label are organized in a two classes.
+- Label generation for the training purpose( new label
+  as a two class )
+
+** Text Preprocessing
+*** lowercasing
+- converting all the data to the lower case so that
+   texts that differ only in the casing are taken as same
+
+*** Removing the punctuation and special characters
+Remove the punctuation and the special characters that doesnot
+carry semantic meaning.
+*** Tokenization
+split the text into individual words( tokens)
+*** Removing Stop Words
+remove the most common words that doesnot contirbute
+any information in the text
+*** Lemmatization or stemming
+convert the word to their base form . It will retain the
+context of the text .
+**  Feature Extraction ( Vectorization )
+*** Bag of words
+*** Term Frequency-Inverse Document Frequency ( TF-IDF)
+
+** Splitting the Dataset
+
+** Model Training
+
+** Logistic Regression
+
+** Model Evaluation

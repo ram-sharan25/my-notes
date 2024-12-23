@@ -1,0 +1,19 @@
+:PROPERTIES: 
+:ID:       9DE2CEC7-46D6-479A-B559-1106FF6AAF32
+:ROAM_REFS: https://www.gnu.org/software/emacs/
+:END:
+#+title: Emacs
+
+* Emacs Lisp
+:PROPERTIES:
+:ID:       230882FA-14F0-4DE7-A702-A880F7DD42A6
+:END:
+
+
+** Variables
+:PROPERTIES:
+:ID:       A410160C-F6BD-493F-A93A-7125D2F32D0F
+:END:
+
+** Functions
+

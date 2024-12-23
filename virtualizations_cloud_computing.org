@@ -1,0 +1,516 @@
+:PROPERTIES:
+:ID: E946A091-0809-4F9C-BDA3-1E5C217436F3
+:END:
+#+title: Virtualizations : Cloud Computing
+
+* Disk Image
+- A disk Image is a file that contains entire content of the storage device
+  like DVD or hard drive .
+- It is mainly used rfto store for the purpose of backup, replication,and
+  also for virtualizations.
+** Types of Disk Image File Formats  :
+
+*** ISO Image :
+- This is the exact  copy of the entire content of a optical  disk which is mainly used by
+  developers and companies to store the installation files of software along
+  with their file systems.
+- File format is .iso.
+- Usage :
+  1. Software Distribution: Used to distribute the software packages by storing
+     all the installation files and folders inside a disk. Also all these
+     files can be packaged as iso in a single block and distributed over the
+     internet.
+  2. Creating Bootable Media:ISO files can be written to USB and Hard drives and
+     these files can be used as bootable disks for OS installations.
+     These also can be used to store recovery files/ images.
+*** Virtual Machine Disk:
+- It is a file format used by VMware products to store all the contents of
+  the virtual machine hard disk.
+- It's file format is .vmdk.
+- Usage:
+  1. It is used for virtualization , as single snapshot can be replicated to
+   install multiple instances of VMware Products.
+  2. Used to keep snapshot of the current state of the VMware products as
+     backup.
+*** Virtual Box Disk Image
+- It is the image file format created by the virtual box.
+- Extension is .vdi.
+- All the images of virtual disk are for storing backup of system , also using for
+  virtualizations.
+- Has 2 versions :
+  1. Fixed size : Allocated fixed size at first and can be increased with
+     dynamic expanding.
+  2. Dynamic size : Allocated a minimum size and grows automatically.
+     - The caviar is that it can become slow on frequest enlargement.
+*** Virtual Hard Disk:
+- File format developed by Microsoft to represent a  virtual hard disk.It can
+  contain operating system, applications and  data.
+- Created by Micorosft Hyper-V software.
+- file format is .vhd or .vhd.
+- Usage:
+  1. used by Microsoft Products to  store operating system, applications ,and
+   data for the purpose of virtualizations which  allows  virtual disk
+   to be booted and operated as  if in a  physical hard disk.
+  2. Keep snapshot/ or current state of the system for the backup purposes which
+   allows for complete resoration if the original fails.
+*** RAW or DD Image:
+- File format that contains exact byte levelcopy of every sector of the
+  optical disk or partitions.
+- UNIX command dd can create this file format to backup the current state of
+  the system.
+- Usages:
+  1. Used to clone the system to keep the exact byte level copy of all the files
+     and folder structures.
+  2. Used in data recovery from the damaged disks.
+
+*** QEMU Copy on Write:
+- Used by popular open-source  emulator and virtual machine monitoring software
+  QEMU.
+- Copy on Write , If two users try to access the same image , then same pointer
+  is given to both the users, when one tries to modify then only a private copy
+  is created.
+- format is .qcow.
+- Usage:
+  1. Supports to store backup , encryptions and compression of the virtual machines.
+  2. Used in Kernel Virtual Machine environments  to manage virtual machine storage.
+
+*** Open Virtualization Format ovf:
+- Packages one or more images file and a metadata containing the xml file which
+  contains info about the virtual machine.
+- it may also package other files.
+
+* Amazon File Formats:
+1. AKI:Amazon Kernel Image: Compiled kernel that gets loaded on the boot.
+2. ARI:Amazon Ramdisk Image: is the ram disk image  during the loading of kernel
+   and contains the initial driver modules for kelnel to look for root file systems.
+
+3. AMI:Amazon Machine Image:
+
+* Open Stack Supports
+- Open stack has a service named *Glance* which is responsible to store,
+  retrive, backup the virtual machine images.
+- It supports the following file formats:
+  1. vhd
+  2. vmdk
+  3. qcow2
+  4. raw
+  5. iso
+  6. ari
+  7. aki
+
+* Hypervisors
+- Hypervisors are the software,firmware or hardwares which allows for multiple
+  OS to run in a single physical machine side by side.
+- It acts as the layer between the hardware and the virtualized  OS layer
+  instances.
+- Hypervisor controls the host processor, memory  and storage and allocates
+  it to the running machines making sure that the instances cannot disrupt
+  each other.
+- Two types of Hypervisors:
+  1. Bare Metal:
+     - Runs directly on the machine.
+     - Allocates the resources like memory, process, and storage to multiple
+       instances of OS directly.
+     - examples : Xen, Microsoft Hyper-
+  2. Hosted Hypervisors:
+     - Runs on top of a OS and runs multiple instances of OS installations.
+     - Acts like a application managing OSes.
+     - Example: VMware Workstation, Oracle Virtual Box,
+- Based on the kind of virtualizations Hypervisors can be categorized into
+  two types:
+  1. Full Virtualization:
+     - The virtualized machine operates as if  running as a isolated physical
+       computer.
+     - It has no any clue that is it being hosted by a hypervisor.
+     - Hypervisor is the  interface between the actual  hardware  and the VM
+       so it fully emulates all the hardware devices ( processor, storage,
+       RAM).
+     - While the guest OS tries to talk with the hardware, Hypervisor traps
+       and translates the binary instructions.
+     - No need to modify the guest OS ( virtualized OS) as any normal OS
+       can be used out of the box.
+     - Multiple support for the OS as no any specific modifications are necessary
+       in OS to be used as fully virtualized machine.Installation simialar
+       to the physical machine.
+     - Slow and complex as hypervisor has to emulate all the necessary hardware
+       as well as translate instructions in case of hardware calls.
+     - Examples: VMware workstation, Microsoft Hyper V , Oracle Virtual Box.
+
+
+- Hardware Assisted Virtualization:
+  - A type of full virtualization.
+  - Here the hardware ( ex: CPU like AMD-v Intel VT-x ) itself is extended to suppport the
+    virtualization.
+  - So the operations like ( memory fetch, update) instructions from guest OS
+    can be processed by the CPU rather than trapping and translating it. Which
+    increases the speed and efficiency.
+  - With Hardware assisted virtualization CPU can run the hardware instructions
+    in native speed rather than trapping and translating it.
+  - Privileged mode is provided by CPU for the hypervisors to provide the root
+    assess which is normally provided to OS systems.This allows for executing
+    certain instructions in native speed and increase effieciency.
+  - Supported by Oracle Vitual Box.
+
+- Hybrid Virtualizations:
+  - Combines both full and para virtualization
+  - Used Hardware Assisted Virtualization  to get the benefits of full virtuali
+    zations and also allows the use of para virtualization drivers to reduce
+    translation overhead.
+
+
+
+  1. ParaVirtualization:
+     - The kernel of the virtualized machine( guest OS ) knows that it is runnig
+       in the virtualized environment.
+     - Guest OS interacts with the hypervisor with the help of special interface
+       rather than hardware emulation.
+     - *Hypercalls* are the special instructions when guest OS needs to call
+       the hardwares. Hypervisors donot need to trap and translate the binary
+       instructions which increases speed and efficiency.
+     - No need to emulate the hardwares entirely as hardware call are routed
+       via hypercalls.
+     - Kernel of Guest OS is to be modified to be used as a paravirtualized
+       machine.
+     - Examples : Xen Hypervisors, KVM (with paravirrtualize driver like
+       VirtIO)
+** Examples of Type 1 ( Bare Metal Hypervisors) :
+*** KVM
+- Kernel-besed virtual machine.
+- Ships with linux kernel
+- Truly a type 1 hypervisor as it takes on the hardware control on launching
+  but still uses the linux kernel for processing.
+- It doenot perform hardware emulation , but commonly  used with QEMU.
+*** Xen
+- Initially a paravirtualization .
+- Also has a hardware assisted virtualization.
+- QEMU is used for hardware emulation.
+
+** How Privileged Operations Are Executed:
+1. Ring Architecture: Modern CPU architectures use a protection ring model for
+  controlling access to critical operations.
+   - Ring 0 (Kernel mode): Reserved for the most privileged tasks(like the
+     hypervisor or the host OS kernel).
+   - Ring 3 (User mode): Used for non-privileged applications, including guest
+      operating systems running in VMs.
+   - In virtualization, the guest VM typically operates in Ring 3, while the
+     hypervisor handles privileged operations from Ring 0.
+2. Trap and Emulate: If the guest OS tries to perform a privileged operation
+   (which would normally require Ring 0 access), the CPU traps the operation
+    and redirects it to the hypervisor, which emulates the desired behavior.
+    This technique is used in full virtualization.
+3. Paravirtualization: In this approach, the guest OS is aware of the
+   virtualized environment and cooperates with the hypervisor. Instead of
+   attempting to execute privileged instructions directly, the guest OS
+   makes hypercalls (special system calls) to request the hypervisor to
+   perform the operation. Xen is a well-known hypervisor that supports
+   paravirtualization.
+4. Hardware-assisted Virtualization: Modern CPUs (e.g., Intel VT-x and AMD-V)
+    provide specific virtualization extensions that help efficiently manage
+    privileged operations. These technologies allow guest VMs to run in
+    their own privilege level without the need for software-based emulation.
+   1. The CPU provides an additional privilege level (Ring -1) for the
+      hypervisor, enabling it to directly manage guest VMs without the
+      overhead of software traps.
+   2. This approach improves performance and reduces the complexity
+      of virtualization.
+
+** Examples of Type 2 ( Hosted Hypervisors) :
+*** Oracle Virtual Box:
+- Opensource hypervisor
+- Can use hardware assisted hypervisor if supported by hardware
+- also can use the driver for para virtualization for come LINUX and Windows
+  guests.
+*** QEMU:
+- Quick Emulator
+- OPerates in Two Modes :
+  1. Full System Emulation:
+     - Emulates a full system ( processors and associated peripherals)
+     - Can be used to launch/ switch  OS without rebooting the host PC.
+     - can emulate different hardware and assocaited peripherals like:
+       1. ARM
+       2. PC
+       3. MIPS etc
+  2. User Mode Emulation:
+     - Can launch one process compiled for one system in the other system.
+     - Only provides a subset of features assuming the host is doing some work.
+     -
+
+* Virtual Machines :
+- Emulated physical computers which has its own processor, memory and storage.
+- This run a full Operating System with its all features like a real physical
+  machine.
+- They are managed by the hypervisors or virtual machine managers.
+- Types of Virtual Machines:
+  1. System Virtual Machines:
+     - Full fledged operation system installed and operation.
+     - Has its own memory, processing power and storage allocated by the
+       hypervisors.
+     - Can run multiple machines independently as every one of them are single
+       physical computer.
+     - Multiple VM can share the same hardware( harddisk , processor, RAM) but
+       they are isolated from each other.
+     - Examples are VMware Virtual Machines , Microsoft Hyper-V vietual machines.
+
+  2. Process Virtual Machines:
+     - There are not full OS installations but running environments for the
+       applications based on platform it is designed on with resources allocated
+       for a single process only.
+     - Also called Managed Runtime Environment/ Application Virtual Machine.
+     - This is used to run a application in a isolated environment with it own
+       required resources, which provide compability across multiple platforms.
+     - Example : Java Virtual Machines, Python Virtual Machines.
+
+* libvirt:
+- management tool and API  to manage hypervisors.
+- C library that has binding in other languages.
+- SUpports hypervisors like
+  1. VMWare ESX
+  2. Xen/QEMU
+  3. VMWare Server
+- several GUI to interact with libvirt one of which is *virt-manager* ( Virtual
+  Machine Manager)
+* Network Virtualizations:
+- It abstracts the physical network into logical networks which makes network
+  more manageable, flexible and programmable which can be controlled dynamically
+  by programs/softwares.
+- It allows the multiple networks isolated physically to use the shared resources.
+
+#+DOWNLOADED: screenshot @ 2024-09-30 19:05:46
+#+attr_html: :width 800px
+#+attr_latex: :width 600cm
+#+attr_org: :width 100px
+[[file:data/virtualizations_cloud_computing/2024-09-30_19-05-46_screenshot.png]]
+
+- Here in the figure , The individual networks isolated physically can be controlled
+  or managed as SDN and tunnelling can be used to connect to each other .
+- This whole approach of networking is Network virtualization.
+- Also the network functions like firewall load balancing can be managed with
+  the help of network function virtualization.
+
+* Network Function Virtualization:
+- It is the traditional network functions like ( firewall, load balancing ) etc that
+  ran over the physical system to be virtualized and run in a VM or virtual dedicated
+  hardwares.
+- This virtualization helps in scaling , deploying and also sharing the functions
+  over the same SDN connecting many Virtual networks spanning over the physical distance
+- This makes it easier to deploy, scale, and manage network services.
+
+* Tunnelling:
+- It is a networking mechanism in which a protocol is encapsulated inside another
+  protocol.
+- Example IP packets can be packed inside IPSec or GRE packets for secure
+  connections.
+- Has two endpoints where data  encapsulation and decapsualtion occurs.
+- VPN is one example where a data of a private network is encapsulated and
+  routed over the public internet in a secure manner.
+- VoIP is another example where voice is sent over the IP to ensure compatibility
+  across the network.
+
+* Software Defined Networking:
+- A Networking approach in which software based control or API are used to
+  control the data in the network.
+- Network Control and Data routing functionalities are decoupled and network
+  is directly programmable.
+- Lover level functionality are abstracted which makes network more flexible
+  and manageable.
+- In traditional approach the networking  devices at different levels of network
+  should be of same vendor ( hardware implementation and protocol).
+- But with this different devices can be mixmatched according to the usecase and
+  preferences.
+
+#+DOWNLOADED: screenshot @ 2024-09-30 18:34:33
+#+attr_html: :width 800px
+#+attr_latex: :width 600cm
+#+attr_org: :width 100px
+[[file:data/virtualizations_cloud_computing/2024-09-30_18-34-33_screenshot.png]]
+
+
+- Components of SDN:
+  1. Data Plane and Contorl Plane:
+     - Data plane means the level of data transfer ususally in the levels
+       of router and switches.
+     - Control plane deals with controlling these devices and setting the
+       network rules , also communicating with the performance monitoring or higher
+       level API's.
+     - Usually handled by centralized controller called SDN controller.
+  2. Programability:Allows admin to dynamically set/configure  the devices co
+     nnected in the network.
+  3. Centralized Control: A centralized controller to set the network rules,
+     also communiciates with the network devices to control the data flow.
+  4. NorthBound API  and SouthBound API:
+     - API interface from SDN controller to Higher level Network Applications
+       like Network Performance Monitoring  is *NorthBound*
+     - API to the Network devices liek router/switches is the southbound.
+
+
+
+* Linux Bridge :
+- It is a kernel feature of LINUX which acts as a switch to connect two network
+  interfaces, implemented in software. It connects multiple network structure
+  and VM together and routes the data based on the MAC addresses.
+- In KVM it can connect VM with each other as well as with the outside network.
+- It also connects the container, docker VM to the host interfaces too .
+
+
+* Open v Switch:
+- Powerful virtual switch like Linux Bridge but implemented in software to provide
+  advanced networking features in the virtualized environments.
+- Usually used in cloud, SDN and network virtualization.
+- suports network monitoring
+  1. open v switch can store the network states.
+  2. allows openvswitch to react to and track  network changes and migrations.
+- Networking monitoring examples:
+  1. NetFlow
+  2. sFlow
+- supports quality of service : traffic queing and shaping *( controlling data flow)*
+- works with most of hypervisors like Xen, VMWares, and container systems( Dockers).
+  #+DOWNLOADED: screenshot @ 2024-09-30 19:42:12
+  #+attr_html: :width 800px
+  #+attr_latex: :width 600cm
+  #+attr_org: :width 100px
+   [[file:data/virtualizations_cloud_computing/2024-09-30_19-42-12_screenshot.png]]
+- In the figure above it shows a open flow based SDN controlled Open V Switch
+- Controller:
+  1. SDN which controlls and manages the openVSwitch  via openvswitch daemon.
+  2. Pushes the new flow control and configuration to open v server and open v
+     daemon.
+- OpenVSwitchDaemon:
+  1. It is the controller to manage the flow of data as well
+    as implement the flow rules and configuration .
+  2. It communicates with openvServer to push new configuration changes
+     to db.
+  3. Also communiciates with controller to implement new flow rules, network
+     policies and configurations.
+- OpenVSwitchServer:
+  1. It saves new policies and configuration from controller as well as
+     openvswitcd  and applies them in coordination with daemon.
+  2. Responsible for maintaining the configuration database containing bridge
+     definations, port maps, rules,interfaces, tunnels and other openvSwitch
+     configuration.
+  3. Communicates with openvswitchD and controller using openvDB prototcol.
+- Flow Tables :
+  1. Actual table containing the flow rules to route  the data.
+  2. Managed and changed by openvswitchDaemon on the basis of controller command
+     as well as openvswitch configuration.
+- At the start of openvSwitch , openvswtichdaemon asks the openvserver for the
+  configuration and rules of the openvswitch and based on this the openvswitch is
+  setup.
+- If the database changes then the flow tables is also changed accordingly by
+  openvSwitchdaemon.
+
+* Open Flow
+- Networking protocol used in SDN
+- Divides  total flow into control and data plane.
+  1. Control :
+     - concerned with the controlling of packet routing
+     - updates and store the routing info in flow tables
+  2. Data : Route data according to flow table.
+- Open flow table is collection of flow rules.
+- Each flow rules has:
+  - Headers : Contains info about
+    1. port address,
+    2. ip source ,
+    3. ip destination
+    4. mac source ,
+    5. mac destination,
+    6. VLAN identifier.
+  - Actions:
+    - certain actions to be performed on data on arrival.
+    - action examples:
+      1. drop packet
+      2. send packet to controller
+      3. send packet to server
+      4. change the ip address of the packet and send to outgoing port( NAT)
+- Each flow rules may have priority associated to it if packets matches multiple
+  rules.
+- OPen flow is concerned with the flow based control of switch.
+
+
+* Virtualization Security:
+** Maintinaing the security in virtualization
+- Techniques:
+  1. Guest OS Isolation:
+     - Here the Guest OS is isolated to prevent the side channel attack and
+       attack on the hypervisor itself.
+     - Can be done by either physically  isolating the OS in a separate physical
+       device.
+     - Or can be logically isoalted by using secured method in hypervisors while
+       allocating resources.
+       - called sandboxing
+     - This prevents side channel attacks: which means attacking the sibling
+       VM of the same hypervisor.
+       - Hypervisor can be a single point of failure as if gets control of the
+	 hypervisor then all VM's are compormised.
+       - Also there is always a risk of compromise while sharing resourceas among
+	 the VM's.
+  2. Monitoring Guest OS introspection:
+     - monitor all system as they run , see memory usage, storage usage, and
+       processing power usage.
+     - monitoring network traffic can be difficult as they donot pass over the
+       physical network.
+  3. Securing Images:
+     - The images of VM can pose a security risk.
+       - image may contain the passwords and other sensitive credentials
+       - snapshots and backup images configuration can be reverse engineered
+	  to hack the current running instance of the VM.
+       - also backup images maynot receive the security patches so vulnerable
+	 to attacks.
+       - images may contain malware and if that image is used to clone the VM
+	 then the malware spreads , which poses a security threat.
+
+
+| **Vulnerability**                         | **Description**                                                                           | **Solution**                                                                                                                                   |
+|-------------------------------------------|-------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
+| **Hypervisor Escape**                     | An attacker gains access to the host from a VM.                                            | Use hypervisor hardening techniques and keep the hypervisor updated.                                                                          |
+| **VM Sprawl**                             | Uncontrolled creation of VMs leads to unmanaged instances.                                 | Implement strict VM lifecycle management and regular audits.                                                                                  |
+| **Data Leakage**                          | Data from one VM is accessible by another.                                                 | Use strong isolation mechanisms and encryption.                                                                                               |
+| **Insecure APIs**                         | Management APIs may expose the environment to unauthorized users.                          | Use API security best practices such as authentication, rate limiting, and secure coding.                                                     |
+| **Denial of Service (DoS)**               | Excessive resource consumption by a VM can cause DoS.                                      | Implement resource quotas and monitoring to detect and prevent resource abuse.                                                                |
+| **Unsecure VM Migration**                 | Unencrypted migrations can be intercepted and tampered with.                               | Use encrypted channels (e.g., TLS) for all VM migrations.                                                                                     |
+| **Virtual Network Attacks**               | Attacks like ARP spoofing can occur within virtual networks.                                | Use network segmentation, virtual firewalls, and secure configurations.                                                                       |
+
+** Maintiaing Hypervisor Security:
+  - Hypervisor Management communications can be separated from the other communicaitons.
+  - limiting access to hypervisor.
+  - disconnect any physical harware if not being used.
+  - if a single guest is compromised then assume all are compormised and act accordingly.
+
+
+** Five Primary Functions of Hypervisor :EDEMA
+1. HY-BF1: Execution Isolation for VirtualMachines (VMs)
+2. HY-BF2: Devices Emulation & Access Control
+3. HY-BF3: Execution of Privileged Operations for Guest VMs
+4. HY-BF4: Management of VMs
+5. HY-BF5: Administration of Hypervisor Platform and Hypervisor Software
+
+
+** Cloud Security Alliance:
+- Non profit organization where cloud service providers grouped to define the
+  best practices of cloud security.
+- Also provides third party assestment of a cloud service provider through
+  CSA Start Certification and assestment Process.
+- Hosts summit and conference releated to cloud security.
+- Cloud Computing Certifications.
+-
+
+** CSA Threats
+:PROPERTIES:
+:ID:       F990EF50-7E36-4ED1-8A67-7291513E85B3
+:END:
+| **Threats**                                      | **Problems**                                                                                                                                          | **Solutions**                                                                                         |
+|--------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
+| **1. Data Breaches**                             | Unauthorized individuals gain access to sensitive data, leading to potential loss of confidentiality, legal issues, and reputational damage.            | Implement robust encryption, multi-factor authentication, and regular security audits.                 |
+| **2. Insufficient Identity, Credential, and Access Management** | Systems often can't scale effectively, weak passwords are used, and cryptographic keys are not managed properly, leaving access points vulnerable.       | Use multiple types of identifying information, regularly rotate cryptographic keys, and enforce strong password policies. |
+| **3. Insecure Interfaces and APIs**              | APIs are prime targets for attacks since they are the main gateways for interactions with cloud services. Poorly designed APIs can lead to data exposure.| Design APIs with security in mind and conduct thorough vulnerability assessments regularly.             |
+| **4. System Vulnerabilities**                    | Bugs in software or systems create entry points for attackers, and shared resources between systems increase the risk of exploitation.                   | Regularly update systems and software to patch known vulnerabilities and conduct continuous monitoring. |
+| **5. Account Hijacking**                         | Phishing and fraud lead to unauthorized access to accounts, enabling attackers to control or steal sensitive data.                                      | Prohibit credential sharing, use multi-factor authentication, and monitor accounts for suspicious activity. |
+| **6. Malicious Insiders**                        | Insiders with privileged access can misuse their roles to compromise systems or steal data, making internal threats difficult to detect.                 | Segregate administrator roles, enforce strict access controls, and monitor and audit system activities. |
+| **7. Advanced Persistent Threats (APTs)**        | Attackers stay undetected within systems for long periods, exfiltrating data or intellectual property without immediate detection.                       | Implement continuous monitoring, use intrusion detection systems, and secure data with encryption.      |
+| **8. Data Loss**                                 | Permanent loss of data due to failures in backup systems or accidental deletion can be catastrophic for businesses.                                      | Ensure regular backups, use off-site storage, and secure encryption keys to prevent data loss.         |
+| **9. Insufficient Due Diligence**                | Companies may overlook important technical, legal, and security considerations when transitioning to cloud, leading to compliance and security issues.   | Conduct thorough assessments of commercial, legal, and security aspects before adopting cloud services. |
+| **10. Abuse and Nefarious Use of Cloud Services**| Cloud resources can be exploited for malicious activities such as DoS attacks, phishing, or cryptomining due to weak control over access to services.     | Enforce strict access control measures, monitor for misuse, and apply rate limits on resource usage.    |
+| **11. Denial of Service (DoS)**                  | Attackers overwhelm cloud services, rendering them unavailable, leading to service outages and financial losses.                                          | Implement DoS protection measures, including traffic monitoring and limiting resource usage per client. |
+| **12. Shared Technology Issues**                 | Shared infrastructure between cloud tenants may lead to unintended data leakage or unauthorized access to resources.                                      | Implement strict tenant isolation, perform regular vulnerability scans, and use encryption for sensitive data. |
+
+
+**

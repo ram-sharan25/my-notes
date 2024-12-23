@@ -1,0 +1,45 @@
+:PROPERTIES:
+:ID:    DA4A72B3-46F0-4C81-BF53-D0E5CDFF9C68
+:END:
+#+title: syllabus mid term cloud computing
+
+
+* Definations and basics only
+
+- [d] Client Server
+- [d] Middleware
+- [d] Sockets
+- [d] Remote Procedure Calls
+- [d] MOM
+- [d] SOA
+- [d] Distributed Object Oriented Middleware
+- [d] Web Services
+
+* Virtualizations
+
+- [d] Disk Images
+- [d] Virtual Machine Images
+- [d] Hypervisors
+- [d] Virtual Machines
+- [d] libvirt
+- [d] Software Defined Networking
+- [d] Network Virtualization
+- [d] Open vSwitch
+- [d] Open Flow
+- [d] Linux Bridge
+- [d] Virtualization Security
+
+* Intro to Cloud Computing
+
+
+- [d] Cloud
+- [d] Cloud Computing
+- [d] Public Cloud
+- [d] Private Cloud
+- [d] Hybrid Cloud
+- [d] Cloud Service Models with examples
+- [d] Why Cloud ? Why not Cloud ?
+- [d] Open Stack
+- [d] Model For installation of Open Stack
+- [d] Glance and Horizon
+- [d] Difference beteen VM and Container

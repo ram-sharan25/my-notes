@@ -1,0 +1,182 @@
+:PROPERTIES:
+:ID:       4552905F-5288-42CA-A31B-7C160AF5DB15
+:END:
+#+title: Maximum Likelihood Estimate
+* Maximum Likelihood Estimate
+
+
+
+- Split it in two parts
+  - The M part( finding the maximum) and the L-part ( which is the likelihood).
+- The M part which talks about the maximum of the function is found where its
+  derivative is zero.
+  - It's like climbing the hill, when we are climbing on one, we will get to
+    top when the inclination ends, which means slope is zero.
+    - The slope of function defines its derivative and the point where its
+      derivative is zero gives the maximum of the function.
+    - In case of Gradient Descent we use the same approach but our approach is
+      to minimize the function.
+- The L part, the function being maximized is likelihood of seeing the data, given
+  the model parameters. We tweak the model parameters to maximize the likelihood.
+- It is a systematic way to estimate the true data generating parameters.
+
+
+- Maxmimum likelihood estimate is one of the optimization algorithm like that
+  of Mean Squared Error or Sum of Square Errors.
+
+- As per my understanding of the subject.
+  - This is a method to estimate the parameters of the probability distribution
+    function which explains the data.
+  - The idea behind is to find the parameter of the model that maximizes the
+    likelihood of finding the observed data, assuming that the given model is
+    best fit for the data.(So it like estimating the observed value of the data
+    for different values of the parameters that makes up the distribution function.
+
+** Likelihood Function:
+- The likelihood function represents the probability of observing the data as
+  a function of model's parameters. If there is are  given data points and a model
+  with some unknown parameters, then the likelihood function provides how likely
+  it is to obeserve those points for different values of model paramters.
+
+- For a set of observations X = {x1,x2,x3,.....xn}. and a model with parameter
+  theta , the likelihood function L(theta). is
+
+
+#+DOWNLOADED: screenshot @ 2024-09-16 23:28:00
+#+attr_html: :width 800px
+#+attr_latex: :width 600cm
+#+attr_org: :width 100px
+[[file:data/Maximum Likelihood Estimate/2024-09-16_23-28-00_screenshot.png]]
+- since X is the datasets then the probabilty holds the value of sum of probability
+  of all the values of X i.e( X ranges from x1 to xn).
+
+- The main aim of the MLE is to maximize this function. The value of theta for
+  which this function becomes maximum is the optimal value of theta. And after
+  fitting this value to the model, it is most likely that model will predict the
+  observed value correctly.
+     #+DOWNLOADED: screenshot @ 2024-09-16 23:38:55
+     #+attr_html: :width 800px
+     #+attr_latex: :width 600cm
+     #+attr_org: :width 100px
+     [[file:data/Maximum Likelihood Estimate/2024-09-16_23-38-55_screenshot.png]]
+- Since the likelihood function is the product of probabilities then (which can
+  be very small and tiresome to work with) so that it is common to work with
+  log of the probabilities of the function to simplify the calculations.
+
+  #+DOWNLOADED: screenshot @ 2024-09-16 23:43:50
+  #+attr_html: :width 800px
+  #+attr_latex: :width 600cm
+  #+attr_org: :width 100px
+  [[file:data/Maximum Likelihood Estimate/2024-09-16_23-43-50_screenshot.png]]
+- Though we are maximizing the Log Likelihood of the function, it will be same
+  as maximizing the likelihood function. so that this maximization will result
+  in the optimal value of theta.
+
+- Remember that the distribution can be any one among the vast array of distirbution
+  and the p.d.f can be any from those dist.
+
+
+** Aggregrating Probabilities in Maximum Likelihood Estimation:
+
+- While we formulate a MLE for the the data with X ={x1,x2,x3 ,.... xn} with different
+  probability distribution  we find the combined probrabilities by aggregrating
+  the probabilities of the individual data points.
+
+- If the data points are independent to each other then each probabilities are
+  multiplied to each other to form the aggregrate total probabilities.
+- Which means that the joint probability of the dataset  i.e likelihood of observing
+  the entire dataset is the product of individual probabilities of each observation.
+
+  #+DOWNLOADED: screenshot @ 2024-09-17 23:13:53
+  #+attr_html: :width 800px
+  #+attr_latex: :width 600cm
+  #+attr_org: :width 100px
+  [[file:data/Maximum Likelihood Estimate/2024-09-17_23-13-53_screenshot.png]]
+
+- The reason of multiplication is due to the fact that individual probalities are independent
+  to each other.
+
+  To calculate the joint probabilities of two independent probablities we get a product of them.
+       as ,
+       #+DOWNLOADED: screenshot @ 2024-09-17 23:16:31
+       #+attr_html: :width 800px
+       #+attr_latex: :width 600cm
+       #+attr_org: :width 100px
+       [[file:data/Maximum Likelihood Estimate/2024-09-17_23-16-31_screenshot.png]]
+- As the single value of probabilities is very small and multiplying such small values results
+  in very very smaller values , so that log of the joint probabilities is taken for
+  easier calcuation and understanding.
+
+- The example of maximum likelihood estimation for Normal distribution.
+* Maximum Likelihood for Normal Distibution
+:PROPERTIES:
+:ID: 5793CEFE-9BA7-4DA9-905F-E3D36B8D59D9
+:END:
+
+- Lets say we have X = {x1,x2,.....xn} points which is defined by a Normal distri
+  bution with parameters N(mean,sigma^2) where mean is the mean of all the data
+  and sigma^2 is the variance of the data.
+- The PDF for Normal distribution is defined as
+
+- Now the likelihood function for the Normal distribution is
+
+
+#+DOWNLOADED: screenshot @ 2024-09-17 00:17:32
+#+attr_html: :width 800px
+#+attr_latex: :width 600cm
+#+attr_org: :width 100[[file:data/Maximum Likelihood Estimate/2024-09-17_00-17-32_screenshot.png]]
+
+- Now, taking the log likelihood of the function we get ,
+  #+DOWNLOADED: screenshot @ 2024-09-17 00:17:16
+  #+attr_html: :width 800px
+  #+attr_latex: :width 600cm
+  #+attr_org: :width 100px
+  [[file:data/Maximum Likelihood Estimate/2024-09-17_00-17-16_screenshot.png]]
+- Notice how the multiplication changes after applying log.
+
+#+DOWNLOADED: screenshot @ 2024-09-17 00:18:10
+#+attr_html: :width 800px
+#+attr_latex: :width 600cm
+#+attr_org: :width 100px
+[[file:data/Maximum Likelihood Estimate/2024-09-17_00-18-10_screenshot.png]]
+[[id:4552905F-5288-42CA-A31B-7C160AF5DB15][Maximum Likelihood Estimate]]
+
+- The above function defines the log likelihood of data points X w.r.t mean and sigma^2 of
+  the data
+
+- Now the second step is to maximize this log likelihood so that the optimal value of para
+  meters can be found, and the best likelihood estimate of data can be estimated.
+  #+DOWNLOADED: screenshot @ 2024-09-17 12:40:02
+  #+attr_html: :width 800px
+  #+attr_latex: :width 600cm
+  #+attr_org: :width 100px
+ [[file:data/Maximum Likelihood Estimate/2024-09-17_12-40-02_screenshot.png]]
+
+
+* Maximum Likelihood for Bernoulli Distribution
+
+- The Bernoulli Distribution is used to model the distribution which has two independent
+  events in it. One is success(denoted by 1) and another is failure (denoted by 0).
+
+- Probability Mass Function for discrete random variable
+- Probability Density function for continuous random variable.
+
+
+- The probability mass  function for Bernoulli distribution is:
+
+  #+DOWNLOADED: screenshot @ 2024-09-24 23:17:17
+  #+attr_html: :width 800px
+  #+attr_latex: :width 600cm
+  #+attr_org: :width 100px
+  [[file:data/Maximum Likelihood Estimate/2024-09-24_23-17-17_screenshot.png]]
+
+* Maximum Likelihood for Coin toss
+Here the probability of head is p and probability of tail is 1-p
+n is the total no of toss.
+- if n is the total no of heads in the n tosses and n-k is the total no of tails
+  then , the MLE for this distribution is
+  #+DOWNLOADED: screenshot @ 2024-09-25 14:09:02
+  #+attr_html: :width 800px
+  #+attr_latex: :width 600cm
+  #+attr_org: :width 100px
+  [[file:data/Maximum Likelihood Estimate/2024-09-25_14-09-02_screenshot.png]]

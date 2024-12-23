@@ -1,0 +1,66 @@
+:PROPERTIES:
+:ID:       5B2FC9D3-6546-4AB8-8C6B-BE6A160204E7
+:END:
+#+title: Closet Pair and Convex Hull
+
+* Closest Pair
+- This algorithms aims to find the pair of points that have the minimum distance
+  among the collection of points.
+- It is somehow similar to the clustering problem in machine learning with
+  cluster size of two.
+- It can be solved by many methods like brute force => where distance between
+  every points is calculated.
+- Distance can depend on the type of data being taken.
+- If numerical data then euclidian distance and if text then simillarity index
+  or Hamming distance.
+
+** Brute Force :
+- Here distance between every other points is calculated.
+- As the distance from a-b and b-a is same , we can calculate the distance
+  between them only once.
+- Also calculating the squareroot is computationally expensive so it better
+  to keep the distance in squared sum than the squareroot.
+*** Algorithm
+#+BEGIN_EXAMPLE
+Find the closest pair of point in the plane by brute force.
+Input: A list of P of n(>=2) as p(x_1,y_1)......p(x_n,y_n)
+Output: The distance between the closest pair , or coordinates of closest
+	pair.
+1: d<-inf;
+2: for i = 1 to n do
+3:  for j = i+1 to n
+4:   d<-min(d,(x_1-x_2)^2+(y_1-y_2)^2
+5: return d
+#+END_EXAMPLE
+
+
+* Convex Hull Problem
+- It is the smallest convex that encloses all the points forming a convex polygon.
+- This algorithm is important in image processing , route planning , and object modelling.
+- The convex hull of the set of points in the 2D space is the smallest convex polygon shape
+  that encloses all the points in it.
+- The problem of convex hall is solving the points of Set S with n points , to find the
+  smallest polygon that encloses all the points of the set.
+- To solve it we need to find the vertex of the polygon .
+- The vertices are also called the extreme points by mathematican.
+** Brute Forcee :
+
+- We can find if a line segment of points(p1,p2) is the boundary of the convex hull or not.
+- For this we see if all the points of the Set S falls on either side of the line segment.
+- We repeat this process until we find a list of line segments , which acts as a boundary
+  for the set of the points.
+- A straight line between P1 and P2 is given by
+#+BEGIN_VERSE
+   ax+ by = c
+   where a = x_2-x_1 , b = y_2-y_1 and c is x_1 * y_2 - x_2 * y_1
+#+END_VERSE
+- This line will divide the plane into two planes .
+- Checking the value for ax+by = c for all the points we can find if all the points
+  lie on either side of the line .
+- This can be done as ax+by > c is one side , ax+by<c is another side and ax+by=c is on the line.
+- Using this we can find out a single boundary line for convex hull.
+- This process is repeated for all the boundaries of the convex hull.
+- The complexity of the algorithm is O(n^3).
+- It is so because we need to find the line between (n * n-1 points)/2 and need to find if all
+  n-2 other points fall on the either side of the line.
+-

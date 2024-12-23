@@ -1,0 +1,5 @@
+:PROPERTIES:
+:ID:       940C58A4-9B27-4AA9-AC41-34A5B00893C1
+:END:
+
+[[id:5793CEFE-9BA7-4DA9-905F-E3D36B8D59D9][Maximum LikeliHood Estimation for Normal Distribution]]

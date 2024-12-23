@@ -1,0 +1,276 @@
+:PROPERTIES:
+:ID:       5921A569-AEF7-45A0-B1DE-3EB399984FEF
+:END:
+#+Ref: Introduction to the Design and Analysis of Algorithms: Levitin
+#+title: Brute Force
+
+- Straight forward approach to solving problem, directly based on the problem
+  defination, concepts involved.
+
+- Applicable to wide range of problems.
+
+- If the problem is to be solved for few instances than designing efficient
+  algorithms is more costly than using brute force to find the solution of the problem.
+
+- Application of Brute Force in sorting algorithms.
+
+** Sorting Algorithms
+:PROPERTIES:
+:ID:       61C87F42-92BE-444F-9AEE-237D340F0A42
+:END:
+
+***  Bubble Sort
+:PROPERTIES:
+:ID:       B3F267C3-B475-4482-B454-1D859ADE4E19
+:END:2
+
+- Bubble sort is another brute force algorithm where adjacent elements are compared
+  and swapped if they are out of order. So the largest element will eventually
+  bubble as the last element.
+
+- Here first the largest element is found on the first loop, and it is bubbled to
+  the last element by comparing each adjacent elements and swapping them if the
+  A[j] is greater than the A[j+1];
+
+- The complexity of the algorithm is O[n^2);
+
+**** Algorithm
+#+BEGIN_EXAMPLE
+ Sort a given array  A[0,.....,n-1] with bubble sort Algorithm.
+ Input: An array  A[0,.....,n-1] of orderable format.
+ Output: An array  A[0,.....,n-1] with ordered elements.
+
+ 1. for i <- 0 to n-1 // go from first element to the last
+ 2.     for j <- 0 to n-1-i // go from first element to the last  unsorted element.
+ 3.         if(A[j]>A[j+1] -> do swap(A[j], A[j+1]) // compare the adjacent element
+						  if they are out of order then swap
+#+END_EXAMPLE
+
+**** Code
+#+begin_src c++
+
+  # include <iostream>
+  # include <array>
+    using namespace std;
+
+
+  void  bubbleSort(array<int,10> A){
+    const int len =A.size();
+
+    for(int i = 0;i<len-1;i++){
+      for(int j=0;j<len-1-i;j++){
+	if(A[j]>A[j+1]){
+	  int temp = A[j];
+	  A[j] = A[j+1];
+	  A[j+1] = temp;
+
+	}
+      }
+
+    }
+    for(int i=0 ;i<10;i++){
+       cout << A[i]<<endl;
+    }
+  }
+
+  int main (){
+    array<int,10> A = {10,13,15,12,5,2,4,6,7,80};
+   bubbleSort(A);
+  }
+
+#+end_src
+
+
+
+*** Selection Sort
+:PROPERTIES:
+:ID:       206F3142-F48F-4B06-A1B5-171BA8FF4F71
+:END:
+- The idea behind this algorithm is to select the smallest element and exchanging
+  it in the place of the first element.
+
+- The name of the algorithm comes from the fact that smallest one is selected
+  or plucked from the unordered array and put it in the place of smallest.
+
+- The complexity of the algorithm is O(n^2).
+
+****  ALGORITHM
+
+ Sort a given array using the selection sort agorithm
+ Input: An array A[0, ... , n-1] of orderable format.
+ Output: An array A[0,..., n-1] sorted in non decreasing order.
+
+ 1.for i <- 0 to n-2 // this is due to the fact that you only have to go upto
+		   // second last as last one is the largest number.
+ 2.    index <- i
+ 3.    for j <- i+1 to n-1 // this is to find smallest from the remaining array.
+			   // the first element of the remaining array is already
+			   // assigned so no need to do from the first element
+			   // It is compared to second till last element.
+ 4.        if min > A[j] //compare to see if number is less than min.
+ 5.            min = A[j],index = j
+ 6.    swap (A[i],A[index])
+
+
+
+**** Code
+
+#+begin_src c++
+
+  # include <iostream>
+  # include <array>
+    using namespace std;
+
+    void  selectionSort(array<int,10> A){
+
+      const int len = A.size();
+      for(int j = 0;j<len-1;j++) {
+	int index = j;
+	for(int i=j+1;i<len;i++) {
+	  if(A[index]>A[i]) {
+	    index = i;
+	  }
+	}
+	  int temp  =A[index];
+	  A[index] = A[j];
+	  A[j]=temp;
+
+      }
+      for(int i=0 ;i<10;i++){
+	 cout << A[i]<<endl;
+      }
+    }
+
+    int main (){
+      array<int,10> A = {10,13,15,12,5,2,4,6,7,80};
+     selectionSort(A);
+    }
+
+#+end_src
+
+- The brute force algorith can also be used in the form of the searching algorithm.
+
+
+** Searching Algorithms
+:PROPERTIES:
+:ID:       5B879BA9-D7FA-46B4-9BC6-D8E7B4BFB4EE
+:END:
+
+*** Sequential Search
+:PROPERTIES:
+:ID:       6A3B189F-C449-4449-A04A-F2932D8F074C
+:END:
+
+- This is a exhaustive operation where a char or element is compared with all the
+  elements of the array. The operation will halt if the match is found or it cannot
+  find any matching element.
+**** Algorithm
+#+BEGIN_EXAMPLE
+Algorith: Selection Sort Selection Sort( array n)
+Input:  array of Size N  , A[0,1,2 ..... n-1] and Key
+Output: index of key , if the key is found in the array, else -1
+0:  index<-0
+1:  for i = 0 to n-1
+4:      if(A[i] == key )
+5:        index = i;
+6:        break;
+7:  if k<n-1 ; return k
+8:   else return -1
+
+#+END_EXAMPLE
+
+**** Code
+#+BEGIN_SRC c++
+ #include<array>
+ #include<iostream>
+ using namespace std;
+
+  int  selectionSearch(array<int,10>A,int key){
+    int len = A.size();
+    int index = -1;
+    for(int i = 0;i<len-1;i++){
+	if(A[i]== key){
+	 index = i;
+	  break;
+	  }
+     }
+    return index;
+    }
+
+  int main(){
+    array<int,10>A = {1,5,0,2,8,40,45,23,78,34};
+    int val = selectionSearch(A,78);
+    cout<<"Key is found in index "<<val<<endl;
+    }
+#+end_src c++
+
+- **A variation of this algorithm is adding the search key as the last element, then
+  the search of the key will be successfull**.
+**** Algorithm
+#+BEGIN_EXAMPLE
+Algorith: Selection Sort Selection Sort( array n)
+Input:  array of Size N  , A[0,1,2 ..... n-1] and Key
+Output: index of key , if the key is found in the array, else -1
+0:  index<--1
+1:  A[n]<-key
+2:  for i = 0 to n-1
+4:      if(A[i] == key )
+5:        index = i;
+6:        break;
+7:  return index
+
+#+END_EXAMPLE
+
+**** Code
+#+BEGIN_SRC c++
+ #include<array>
+ #include<iostream>
+ using namespace std;
+
+  int  selectionSearch(array<int,11>A,int key){
+    A[10] = 78;
+    int len = A.size();
+    int index = -1;
+    for(int i = 0;i<=len;i++){
+	if(A[i]== key){
+	 index = i;
+	  break;
+	  }
+     }
+    return index;
+    }
+
+  int main(){
+    array<int,11>A = {1,5,0,2,8,40,45,23,78,34};
+    int key = 100;
+    int val = selectionSearch(A,key);
+    cout<<"Key is found in index "<<val<<endl;
+    }
+#+end_src c++
+
+*** Brute Force String Matching
+- This algorithm is to find the substring in the text
+- Here text is collection of n characters and substring is collection of
+  m characters and m<=n;
+- This can be solved by comparing each character of substring with that of the
+  text using brute force technique.
+**** Algorithm
+:PROPERTIES:
+:ID:       F3C893CA-251E-4F2E-8B98-A577C044ABB0
+:END:
+
+#+BEGIN_EXAMPLE
+// ALgorithm : Brute Force String Matching
+// Input : A text of array size n T[0,1,2,3,4 .....n-1]
+	   A substring of size m P[0,1,2,3,4,.....m-1] and m<=n.
+//Output: Index of the start of the substring in the text.
+
+1:  for i = 0 to n-m
+2:      if T[i] = P[0]
+3:	j<-0
+4:	while j < i+m
+5:	  if(T[j] = P[j+i])
+6:	    j ++
+7:     if j == m return i ;
+8:      return -1
+#+END_EXAMPLE

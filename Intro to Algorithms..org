@@ -1,0 +1,180 @@
+:PROPERTIES:
+:ID:       91816B08-A2B8-4AF5-B79D-45EDA553F2C4
+:END:
+
+#+title: Intro to Algorithms
+
+* Intro to Algorithms
+
+- It is a well defined computational procedure which takes input and generates output.
+- Studying algorithms helps in developing the analytical skill.
+- Algorithm design techniques can be seen as general problem solving techniques regardless of using it to solve problem using the computers.
+- A person actually doesnot understand something until he is able to teach it to computer ( as computers are dumb machines but extremely fast : Steve Jobs)
+- The way of teaching computers to do any work is through algorithms.
+- A problem can be solved by number of ways or number of algorithms.
+- And these approaches differ in idea, level of sophistication and efficiency.
+
+** Intro:
+- Algorithms are computational procedure which takes input and generates output.
+  Properties:
+  - Input value to the algorithm is the instance of the problem class.
+  - It should terminate.
+  - An algorithm if correct,for every  input terminates in a finite time with a valid output.
+  -
+    #+DOWNLOADED: screenshot @ 2024-09-23 15:59:02
+    #+attr_html: :width 800px
+    #+attr_latex: :width 600cm
+    #+attr_org: :width 100px
+    [[file:data/Intro to Algorithms./2024-09-23_15-59-02_screenshot.png]]
+** Required Characterstics of Algorithms:
+- Unambigious: Each steps and instructions of the algorithms should be self explanatory and no decisions and interpretitions should be needed to execute them .
+- Machine Executable: Can instructions should be executable by the machine.
+- Terminating: For every input the algorithm should terminate after a finite time with a valid output.
+- Correct: The procedure should always  return correct answer to every input.
+
+** Categorizes of Algorithms:
+- Methods of
+** PseudoCode
+- Algorithms are typically wrriten in programming  language agnostic form called pseudocode.
+- These pseudpcodes can  be translate to any languages during the course of application.
+- Indententation is used to denote the loop and block statements in pseudocodes.
+
+
+** Examples
+
+*** Greatest Common Divisor
+
+****  GCD By Euclid Method :
+
+- *Algorithm  GCD-Euclid(m,n)*
+
+  1. Check if n is zero . if true return m ;
+  2. Compute GCD-Euclid(n,m mod n)
+
+- *Pseudocode*:
+
+  #+begin_src
+  //Algorithm to compute gcd(m,n) by Euclid's Algorithm;\\
+  //Input are two non-negative integers m and n;\\
+  //Output is a single value that is greatest common divisor of the inputs m and n;
+  1. while (n!=0) do
+  2.   r <- m mod n
+  3.   m <- n
+  4.   n <- r
+  5. return m
+  #+end_src
+
+**** Consecutive Integer Checking Algorithm
+- *Algorithm*
+
+  1. Assign the value of min(m,n) to t.
+  2. Divide m by t. If rem is 0 then goto step 3 else goto to step 4.
+  3. Divide n by t. If the rem is 0 then return t as the output else goto step 4.
+  4. Decrease t by 1 and goto step 2.
+
+- *Pseudocode*
+
+  #+begin_src
+  //Algorithm to compute gcd(m,n) by consecutive integer checking
+  //Input are two non-negative integers m and n;
+  //Output is a single value that is greatest common divisor of the inputs m and n;
+  1. t <- min(m,n)
+  2. if ( m mod t ) = 0 goto step 4
+  3. else goto step 6
+  4. if (n mod t) = 0 return t
+  5. else goto step 6
+  6. t <- t-1 goto step 2
+  #+end_src
+
+
+*** Consecutive Prime
+
+**** Sieve of Eratosthenes
+- Algorithm to find the prime numbers upto n where n>1 ;
+
+   *Pseudocode*
+
+    #+begin_src
+    // Algorithm to find prime from 1 to n using sieve of Eratosthenes
+    // Input is a single non negative integer number n.
+    // Output is array of prime numbers from 1 to n.
+     for i <- 2 to n do prime[i] <- i
+     iter <- sqr(n)
+     for j <- 2 to iter
+       if(prime[j]!=0)
+	 p <- j*j
+	 for k <- p to n
+	   prime[p] = 0
+	   k <- k + j
+     i <- 0
+     for i <- 2 to n
+       if(prime[i] !=0)
+	 L[i] <- prime[i]
+	 i <- i + 1
+     return L[i]
+    #+end_src
+
+** Fundamentals of Algorithmic Problem Solving
+:PROPERTIES:
+:ID:       9F378117-5924-4E04-8A92-82BE2C54DC92
+:END:
+- Algorthms are  solutions to problems but  not specific answers. They are certain
+  procedural steps to solve a problem.
+
+*** Understanding the Problem :
+- An input to algorithm specifies an instance of the problem the algorithm is
+  trying to solve. And it is very important to predefine the instances ( the
+  type of input) that algorithm needs to handle.
+*** Choosing between approximate and exact algorithmic technique
+- Some Problem may be very complex and process intensive to find the exact solution
+  so approximation algorithms can be devised for them . So the problem defination
+  should be studies thoroughly and exact or approximation techinques sre to be decided
+  beforehand.
+
+*** Algorithm design technique:
+- It is a general method of problem solving applicable to solve the problems from
+  many areas of computing.
+
+*** Correctness of Algorithm:
+- Algorithm should yield correct answer for every instances of the input it is
+  deisgned to handle.
+
+*** Analysis of Algorithm:
+- Analysis of algorithm includes that it's effieciency is tested taking two things under consideration
+  1. Time
+  2. Memory
+     - Based on these two things the effieciency of any algorithm is devised.
+- Also other qualities of algorithms are :
+     1. Simplicity
+     2. Generality
+
+
+  #+DOWNLOADED: screenshot @ 2024-09-24 00:14:12
+  #+attr_html: :width 800px
+  #+attr_latex: :width 600cm
+  #+attr_org: :width 100px
+  [[file:data/Intro to Algorithms./2024-09-24_00-14-12_screenshot.png]]
+** Important Problem Types:
+- Among the large number of problems there are some key areas where many researches
+  have led to developing numberous algorithms.
+- The main drive for researching and developing algorithms in certain fields arises
+  from the practical importance of the field as well as the problem space.
+- Some of the Important problem types are :
+  1. Sorting
+  2. Searching
+  3. String Processing
+  4. Graph Problems
+  5. Combinatorial Problems
+  6. Geometric Problems
+  7. Numerical Problems
+
+
+***  Sorting Problem :
+:PROPERTIES:
+:ID:       EEE57A4E-2A03-42BF-BA6E-1E1F69AEC4E1
+:END:
+- Input is number < a_1, a_2, ...... a_n>
+- Output is sorted number <a_1',a_2', .... a_n'>
+
+- *ALgorithm in words*
+  - Start

@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       3903E0F3-88AE-4583-9AAE-55D85CC58DD9
+:END:
+#+title: Information Entropy
+
+ref :https://machinelearningmastery.com/what-is-information-entropy/

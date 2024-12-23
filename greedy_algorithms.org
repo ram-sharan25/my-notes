@@ -1,0 +1,45 @@
+:PROPERTIES:
+:ID:       556F67C0-5223-4E5C-AD4D-93721BD6E709
+:END:
+#+title: Greedy Algorithms
+#+quote: Greed, for lack of better word is good! Greed is right! Greed works!-Michael Douglas in "Wall Street" movie
+
+- Technique of solving problem.
+- It is a technique for optimization problems , as it tries to solve the problem
+  with best possible solution by remaining within the constraints.
+- It solves the problem in sequence of steps and  on each such steps it
+  grabs the best optimal solution for that steps by remaining within the contraints.
+- On Each Step the central point of the technique is :
+  - 1: feasible: choice should not in any way violate the constraints defined.
+  - 2: locally optimal: choice should be the best possible for that step.
+  - 3: irrevocable: choice once taken cannot be taken back.
+- The assumption is that choosing best choice in each step will result in the
+  best overall solution for the problem.
+- Thes algorithms  will work for cetrain class of problems but may not give a
+  global optimum for all the range of problems.
+- "Matroid" is a abstract combinatorial technique developed begind greedy
+  technique.
+* Minimum Spanning Tree:
+- It is the subset of edge connected and weighted-undirected graphs with the
+  least total weights.
+- Or it can also be explained as the tree with the smallest total weight among
+  the sets of spanning tree.
+* Spanning Tree:
+- It is tree like subgraph of a connected and undirected graph with all vertices
+  connected.
+* Prims Algorithm
+** Algorthm:
+#+BEGIN_EXAMPLE
+//Prim's algorthm to construct the minimum spanning tree
+//Input A undirected, weighted and connected graph G=<V,E>
+//Output Minimum spanning tree with edges E_t  of graph G
+V_t<- {v_0} // set of vertex initialized with a starting vertex
+E_t<- {phi} // set of Edges , initialized with empty set
+for i = 1 to |V|-1 // total vertex - 1 because , first vertex is already choosen
+  find the edge with minimum weight as e^*(v^*,u^*) from all (v,u) //
+  where v is in V_t and u in V-V_t
+  V_t<-V_t U {v^*}
+  E_t<-E_t U {e^*}
+return E_t
+#+END_EXAMPLE
+* Kruskal's Algorithm

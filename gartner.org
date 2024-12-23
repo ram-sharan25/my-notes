@@ -1,0 +1,38 @@
+:PROPERTIES:
+:ID:       89C2C43B-7F18-4051-B1BA-CA8C76E72375
+:END:
+#+title: Gartner: Essential Skills For Engineer
+
+* Core Requirements
+
+** Logical and Analytical Thinking :
+ - Reading books to hone your analytical thinking
+ - Looking at the working of algorithms already implemented
+ - Going through the logs to see if there is any recurring issues  or problems
+   at deeper level.
+ - Solving puzzles and problems to learn about the algorithmic thinking.
+*** Root Cause Analysis:
+ - Performing root cause analysis is a powerful weapon to find the bugs and
+   anomalies in the system.
+ - There are 4 steps for performing the root cause analysis:
+   1. Define problem clearly.
+   2. Gather comprehensive data.
+   3. Identify potential casual facotor.
+   4. Determine the root cause by analyzing the data and casual factors.
+** Collaboration and Communication:
+ - Communicating the requirement and results to the stakeholders.
+ - Collaborating with different cross-functional teams.
+
+***  Building strong communication:
+
+*** Leverage data and evidence
+
+*** Enhance Collaboration and Documentation
+
+*** Making a compelling case of  quality to leaders
+
+** Ways of Working:
+ - Understanding and adopting the ways of working of the team to enhance
+   collaboration and team work.
+ - Example: If a team is using agile frameworks then being familiar with different
+   agile frameworks like

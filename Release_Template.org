@@ -1,0 +1,298 @@
+:PROPERTIES:
+:ID:       769EB3FE-3B46-479C-9B7C-D6A5F1A539FB
+:END:
+#+title:Production Readiness
+* Production Readiness Review (PRR)
+
+| Feature    | [TICKET_NUMBER]: FeatureName     |
+|------------+----------------------------------|
+| Authors    | author-name                      |
+| Start Date | YYYY-MM-DD                       |
+| End Date   | YYYY-MM-DD                       |
+| Status     | Not Started / In Progress / Done |
+
+** Reviewers
+Once review has been completed, corresponding reviewer will check the box next to their name when the review is completed.
+
+*** Required
+- [ ] SRE Team: <reviewer name>
+- [ ] Release Engineering Team: <reviewer name>
+- [ ] Infosec Team: <reviewer name>
+
+*** Optional
+- [ ] Database Team: <reviewer name>
+- [ ] Development Team: <reviewer name>
+
+** Architecture
+- [ ] Is there a high-level summary of the product feature documented
+  along with usecases?
+- [ ] Is there a detailed documentation of the product with setup, development,
+  deployement and contribution explained in detail?
+- [ ] Are there any architecture diagrams which show the feature and
+  how it interacts with other services / features?
+  Please add the following: dependencies (internal / external),
+  ports, encryption, protocols, ACLs, security policies, etc.
+
+** Security
+
+*** Design
+- [ ] Does the service follow company infosec guidelines?
+- [ ] Is the service using HTTPS for communication?
+- [ ] How are certificates managed? Are certificates renewed automatically?
+
+*** Infrastructure
+- [ ] Are any new resources added that this service uses?
+- [ ] Is Infrastructure as Code (IaC) (e.g., Terraform) used to create infrastructure required for this service?
+  - [ ] If yes, is IaC code checked using secure code analysis tools?
+  - [ ] Where is the state file stored, and who has access to it?
+  - [ ] Is the state file backed up from remote storage?
+  - [ ] Is the state file version controlled?
+  - [ ] Are there any secrets in the state file?
+- [ ] Are we using a configuration management tool (e.g., Ansible)?
+  - [ ] How are variables and secrets passed?
+- [ ] Are network security policies applied?
+  - [ ] Does the firewall follow the principle of least privilege?
+  - [ ] Can the service handle and mitigate DDoS attacks?
+  - [ ] Is the service behind an Intrusion Detection System (IDS) / Intrusion Prevention System (IPS)?
+  - [ ] Is the service behind a Web Application Firewall (WAF)?
+
+*** Development and Operations
+- [ ] Are there any traffic that communicates via HTTP?
+- [ ] What version of TLS is used? Is TLS 1.2 or higher enforced?
+- [ ] Is security scanning done as part of the pipeline?
+  - [ ] Are vulnerability scans integrated into the CI/CD pipeline (e.g., SAST, DAST)?
+  - [ ] Are dependency scans performed regularly?
+- [ ] Are all secrets encrypted at rest and in transit?
+- [ ] Is this service adding any form of authentication and authorization?
+  - [ ] Is OAuth 2.0 and OpenID Connect implemented for third-party access?
+  - [ ] Is Multi-Factor Authentication (MFA) enforced on sensitive systems?
+- [ ] Does the service follow the principle of least privilege?
+- [ ] Are there audit logs for data access?
+  - [ ] Are logs sanitized to hide sensitive customer information?
+- [ ] Is the service containerized?
+  - [ ] Are we scanning containers for security (e.g., Hadolint, KICS, Checkov)?
+
+*** Logs
+- [ ] Do logs contain any sensitive data?
+- [ ] Are logs sanitized to hide sensitive customer information?
+
+*** Additional Security Practices
+
+*** Authentication/Authorization
+- [ ] Are secure session management practices implemented (e.g., HttpOnly cookies, session expiration)?
+- [ ] Is Single Sign-On (SSO) used for centralized identity management?
+- [ ] Are APIs secured with token-based authentication (e.g., JWT)?
+- [ ] Are failed login attempts limited and monitored for potential brute-force attacks?
+- [ ] Are secure password reset options provided (e.g., OTPs, single-use links)?
+
+*** Vulnerability Scanning
+- [ ] Are penetration tests conducted regularly, ideally with third-party testers?
+- [ ] Is there a process for reporting vulnerability findings and prioritizing remediation?
+
+*** Encryption
+- [ ] Are strong encryption algorithms (e.g., AES-256) used for sensitive data at rest?
+- [ ] Are API keys and secrets managed securely without hardcoding in the codebase?
+- [ ] Are key management practices implemented (e.g., using AWS KMS, Azure Key Vault)?
+
+*** Threat Modeling
+- [ ] Has a threat model been created to identify potential risks and vulnerabilities?
+
+*** Data Protection
+- [ ] Is sensitive data encrypted both at rest and in transit?
+- [ ] Are there data retention policies in place?
+
+*** User Training and Awareness
+- [ ] Are employees trained on security best practices and awareness?
+
+*** Incident Response Plan
+- [ ] Is there an incident response plan in place, and has it been tested?
+
+*** Third-Party Risk Management
+- [ ] Are third-party vendors assessed for security compliance?
+- [ ] Are contracts in place that require third parties to adhere to security standards?
+
+*** Environment Hardening
+- [ ] Are servers and services hardened against attacks (e.g., unnecessary services disabled)?
+- [ ] Are regular patch management practices implemented?
+
+*** Access Controls
+- [ ] Are role-based access controls (RBAC) implemented?
+- [ ] Are user access rights regularly reviewed?
+
+*** Network Security
+- [ ] Is network segmentation implemented to limit the spread of attacks?
+- [ ] Are VPNs used for remote access?
+
+*** Application Security
+- [ ] Are secure coding practices followed?
+- [ ] Are regular code reviews conducted for security?
+
+
+
+
+
+** Operational / Scaling risks
+- [ ] What might be the potential scaling issues?
+- [ ] List all dependencies and mention if the dependency is soft/hard,
+      and how service might be impacted by failure of that dependency?
+- [ ] What is the blast radius if this feature fails?
+- [ ] Are there any SPOFs (Single Points of Failure) in this feature design?
+      If yes, how are we going to handle them?
+- [ ] How easily can we scale the service?
+- [ ] How are we going to scale the service (horizontal or vertical)?
+- [ ] Is there any loadtesting criteria defined? If yes, then is it explained
+      in the documentation?
+- [ ] Is there any monitoring tools to to track performance
+      metrics and scaling events?
+- [ ] Is there any metric defined to capture the system performance ?
+
+** Performance
+*** Optimization Strategies
+
+- [ ] Are there throttling limits on the service (e.g., rate limiting)?
+- [ ] What do customers experience if the limit is reached?
+- [ ] Are there retry and back-off strategies for dependencies?
+- [ ] Can the service run optimally with sudden spikes in traffic?
+- [ ] Has the code been optimized to minimize unnecessary computations?
+- [ ] Are there regular code reviews for identifying and refactoring
+      inefficient code?
+- [ ] Are database indexes applied to frequently accessed columns?
+- [ ] Have database queries been optimized and vetted to avoid complex joins
+      and reduce latency?
+- [ ] Are caching strategies in place for frequently accessed data?
+- [ ] Are network requests minimized and data payloads optimized for size
+      and format?
+- [ ] Are assets (JavaScript, CSS, images) compressed and minified?
+
+*** Latency Checks
+- [ ] Are acceptable latency thresholds defined for various
+      components (e.g., <200ms for API responses)?
+- [ ] Is end-to-end latency being monitored across the request path?
+- [ ] Are API calls optimized to limit the number needed per request?
+- [ ] Has a Content Delivery Network (CDN) been implemented for global users?
+- [ ] Are there alerts set up for when latency thresholds are breached?
+
+*** Performance Benchmarks
+- [ ] Are KPIs such as response time, throughput, and error
+      rate clearly defined?
+- [ ] Has a performance baseline been set to measure future releases against?
+- [ ] Has benchmark testing been conducted using tools like Apache
+      Benchmark, Gatling, or k6?
+- [ ] Are performance benchmarks regularly reviewed and updated based on
+      the latest application performance?
+*** Monitoring and Alerts
+- [ ] Is real-time monitoring of performance metrics (CPU, memory, disk I/O,
+       network latency) set up?
+- [ ] Are alerts configured for metrics that exceed defined thresholds?
+- [ ] Is there ongoing analysis of trends in performance metrics to
+      anticipate and prevent issues?
+- [ ] Is a procedure in place for responding to alerts and
+      mitigating performance degradation?
+
+
+** SLA / SLO / SLI
+- [ ] Is there an SLA defined for this feature/service? If yes, list all the associated SLIs mapping to this SLA.
+- [ ] Is the SLA for the feature/service published publicly?
+- [ ] List out SLOs for the given SLA.
+- [ ] List out SLIs mapping to each SLO.
+- [ ] Are all SLIs measurable?
+
+*** CI/CD
+- [ ] Are build artifacts produced?
+- [ ] Are build artifacts version controlled?
+- [ ] Are build artifacts promoted for each environment (dev/stage/prod)?
+- [ ] Where are build artifacts stored, and how long are they retained?
+- [ ] Do we have a CI/CD process?
+- [ ] Does the CI process consist of the following:
+    - [ ] linting
+    - [ ] unit testing
+    - [ ] security testing
+    - [ ] code scanning (e.g., SonarQube)
+- [ ] How are build artifacts labelled? How many copies of each artifact do we store (`:latest`, `:semVer`)?
+- [ ] How often do we intend to release?
+- [ ] Is the release process fully automated? If not, list the automated and non-automated steps.
+- [ ] Is there any downtime involved in the release? If yes, what is the expected downtime?
+- [ ] How long does the rollback process take?
+- [ ] What deployment strategy are we using (e.g., blue-green, canary, A/B, recreated, shadow)?
+
+** Database
+- [ ] Does this service use any database?
+- [ ] Has the database schema been verified by the Database Team?
+- [ ] Are database queries vetted by the Database Team?
+- [ ] What is the expected growth rate?
+
+** Patching
+- [ ] How often is the service patched?
+- [ ] Is patching fully automated? If not, list automated and non-automated steps.
+- [ ] Is there a runbook for patching the service, infrastructure, and applications used by this feature?
+- [ ] Is there an expected downtime during patching? If yes, how long?
+
+** Backup and Restore
+- [ ] Is this a stateful service? If yes, what is the backend datastore?
+- [ ] Is there a backup process?
+- [ ] What type of backups are done (full, differential, incremental)?
+- [ ] Where are backups stored and what are their RTO and RPO?
+- [ ] Are backups monitored? If yes, please provide a link to the dashboard.
+- [ ] What is the backup retention period?
+- [ ] Was a restore from backup tested?
+- [ ] How frequently are backups done?
+- [ ] How much data is lost if the datastore was restored from the last backup?
+
+** Observability
+
+*** Metrics
+- [ ] Does the service expose metrics?
+- [ ] Do metrics relate to SLOs?
+- [ ] Can exported metrics enable RED-style analysis?
+
+*** Logs
+- [ ] Are logs centralized?
+- [ ] Are logs sanitized to hide sensitive data?
+- [ ] Are logs sent to a centralized observability platform for correlation?
+
+*** Traces
+- [ ] What platform is used to store traces?
+- [ ] Are traces exposing sensitive information?
+
+*** Alerts
+- [ ] Are alerts configured when SLOs are not met?
+- [ ] Is there a troubleshooting runbook for alerts? Provide a link if available.
+- [ ] What platform is used for alerting?
+- [ ] Are alerts configuration version controlled?
+- [ ] Are alerts routed correctly (platform, channel, team)?
+- [ ] Are there alerts to address SLOs?
+- [ ] Are there thresholds for official customer notifications for outages?
+- [ ] Are alerts triggered when SLIs (SLA) are not met?
+
+*** Dashboard
+- [ ] Are dashboards available for service performance? Provide links if available.
+- [ ] Are dashboards version controlled?
+- [ ] Is there a RED-method-style dashboard for the service?
+
+** Responsibility
+- [ ] Which team is responsible for service reliability in production?
+- [ ] Who is the project owner?
+- [ ] Is there a RACI document for the service? If not, explain why not.
+- [ ] Who are the SMEs for this service?
+
+** On-call and Incident Response
+- [ ] Will someone from the build team be on call?
+- [ ] What is the coverage?
+- [ ] Are on-call shifts set up with follow-the-sun coverage?
+- [ ] Is the on-call rotation adequately staffed?
+- [ ] Is training provided for on-call alert handling?
+- [ ] Describe escalation procedures and channels for incidents.
+- [ ] Does the service have a status page (private/public)?
+- [ ] Are there sufficient runbooks to handle incidents?
+- [ ] What communication channels are used (e.g., Slack)?
+- [ ] Is on-call configuration version controlled?
+- [ ] Has a post-mortem report been done on this service before? If yes, provide the link.
+
+** Testing
+- [ ] Did all test cases pass?
+- [ ] Were load tests performed? If so, describe validated breaking points.
+- [ ] Were component failure theories tested? If so, include test results.
+
+** Feedback
+- [ ] Was this checklist useful?
+- [ ] Is anything missing from the checklist?

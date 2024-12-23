@@ -1,0 +1,199 @@
+:PROPERTIES:
+:ID: 38365AB6-98AF-4A1D-AC28-A29DDC529236
+:END:
+#+title: Client Server: Chapter 1 : Cloud Computing
+
+* Client Server Architecture:
+:PROPERTIES:
+:ID:       0FDC776F-1D46-432E-8C28-AF64FCA5EA1C
+:END:
+
+- While trying to establish a connection between two computers and if
+  try to start different programs then the resources and communication cannot
+  be established.
+- For this the protocols for computer connection or computer networks were developed.
+
+** Client / Server Architecture:
+- It is a type of architecture of computer connection where a side acts as a client
+  which will initiate the communiciation and another is the server which will
+  listen to the request indefinitely and fulfills the request.
+
+- The client will request for some services , for that it initiates the communication
+  and on the other side , server is waiting for connection request as well as
+  service request .
+- Upon receiving the request the server provides useful services and sends the
+  results to the client.
+- Clients are easier systems to build as they are the consumer of the data,
+  so the system.
+- Servers need access to the database or routines or resources provided by
+  an operating system , also they are to be protected
+  for seccure connection. so they are complex systems.
+
+- Some basic functionalities of server are :
+  1. Authentication : Verifying the client is who it claims to be.
+  2. Authorization: determining whether the client has  permission to use
+     various resources.
+  3. Providing Services to the client.
+  4. Provide data security: Make sure that only the  authorized client gets the
+     data and also prevent data from being stolen.
+
+- Stateful servers remembers the status of the ongoing communication with the
+  client.
+- Stateless servers doestnot remembers the status of the ongoing communication
+  with the client.
+
+
+* Middlewares :
+
+- Middleware are the software that sit in between the OS and the applications
+  running on the different servers or devices. It connect the software components
+  of the distirbuted sytems.
+
+- It also :
+  1. Enables comunication among the distributed systems.
+  2. Abstracts the complex protocols (eg. TCP/IP) and provides  higher-level
+     API's for developer to develop reusable and portable applications.
+  3. Allows a client using one kind of OS to access the services of server running on
+     another kind of OS .
+  4. It manages the resources like , memory , bandwidth, processing capabilities
+     in distibuted systems .
+  5. Manages the data by  backing them up, caching, securing them across the
+     distributed systems.
+  6. Ensures reliability of distributed system by handling the task of
+     load Balancing and fault tolerances.
+
+** Types of Middlewares:
+
+*** Message Oriented MiddleWares:
+- Here the communication among the distributed systems happes through passing of
+  messages.
+- Components exchanges message via message queues to establish the
+  connection, and share the resources among them.
+- The components are not necessary to be online at the same time, which makes
+  system resilient to failures.
+- Client talks to the middle man and server talks to the middleman , where middle
+  man maintains a message queue to facilitate the communication between the client
+  and the server.
+  #+DOWNLOADED: screenshot @ 2024-09-29 14:56:38
+  #+attr_html: :width 400px
+  #+attr_latex: :width 600cm
+  #+attr_org: :width 100px
+  [[file:data/client_server_chapter_1_cloud_computing/2024-09-29_14-56-38_screenshot.png]]
+*** Service Oriented Architecture:
+- Here the middle wares establishes the interaction between the services
+  of the distirbuted system.
+- Services are independent to each other.
+- Combination of services are also a service.
+- This allows to translate the message between different services using different
+  communication protocols.
+- It is also easy to scale or add services as  services are independent entities.
+- Reliability is also maintained as if single service fails then other services
+  still operate without any problems.
+  #+DOWNLOADED: screenshot @ 2024-09-29 16:40:34
+  #+attr_html: :width 800px
+  #+attr_latex: :width 600cm
+  #+attr_org: :width 100px
+  [[file:data/client_server_chapter_1_cloud_computing/2024-09-29_16-40-34_screenshot.png]]
+- Each Services are loosely coupled  and also have a well defined interfaces.
+
+*** Remote Procedure Calls :
+- In this type of middleware it calls the remote procedure located in the server
+  as if they are local procedures.
+- This middleware handles the marshalling/unmarshalling of the data from client/application
+  to the remote procedure and viceversa.
+- A stub( khuti) file is created in the client to represent the remote procedure
+  call which allows seamless invocation of the remote procedures.
+
+**** Async and Sync RPC :
+- RPC can have synchronous and asynchronous communication:
+
+  1. Synchronous Communication:
+     - Here Client initiates the communication
+     - Client Calls the server
+     - Then it is blocked and waits for the server to respond.
+       #+DOWNLOADED: screenshot @ 2024-09-29 18:30:33
+       #+attr_html: :width 800px
+       #+attr_latex: :width 600cm
+       #+attr_org: :width 100px
+       [[file:data/client_server_chapter_1_cloud_computing/2024-09-29_18-30-33_screenshot.png]]
+
+  2. Asynchronus Communication
+     - Here Client initiates the communication
+     - Client Calls the server
+     - Then it continues it own flow rather than waiting,
+       server after finishing the task responds back to the client.
+       #+DOWNLOADED: screenshot @ 2024-09-29 18:33:07
+       #+attr_html: :width 800px
+       #+attr_latex: :width 600cm
+       #+attr_org: :width 100px
+       [[file:data/client_server_chapter_1_cloud_computing/2024-09-29_18-33-07_screenshot.png]]
+
+
+**** Relationship with RESTful and unRESTful :
+
+#+DOWNLOADED: screenshot @ 2024-09-29 18:17:31
+#+attr_html: :width 800px
+#+attr_latex: :width 600cm
+#+attr_org: :width 100px
+[[file:data/client_server_chapter_1_cloud_computing/2024-09-29_18-17-31_screenshot.png]]
+
+
+*** Distributed Object Oriented MiddleWare:
+- It is based on the concept of Distributed Object Oriented Compoents.
+- Here, the object consisting of data and procedure are kept over the
+   distributed systems and they are used all over the network as they are the part
+   of the local system.
+- This combines the principles of distributed computing with that of object oriented
+  approach.
+- Middleware to facilitate the transferring of these objects is the Distributed
+  object oriented middleware. one of it is Object Request Broker.
+- These middleware also facilitates the encapsulation of the protocols and
+  coordination of the objects in the distributed system.
+
+* Sockets :
+- It is a endpoint for sending and receiving data. A unique address combination of
+  IP and port address to create a unique identifier for a network service.
+- Two Types of Sockets:
+  1. Stream Sockets:Sockets used during TCP connection. Reliable and secure sockets
+     are  for connection oriented message transfer.
+  2. Datagram SOckets:Sockets used during UDP connection. Used when speed is more
+     needed than reliability. Data received in out of order format.
+
+
+* Webservices :
+- By defination webservies   are the applications that provides services
+  typically  using the world wide web.
+
+- They enable different application of the world wide web to commniciate
+  with each other using the internet backbone without the need of custom code.
+
+  Remember using API of google in your own system in rclone. It is example of
+  web service.
+
+- The basic motto is to modify the resources based on the request from the client.
+  So the data from the client can be transferred to the server using different protocols.
+
+- They may use one of the two protocols to provide the services:
+  1. nonRESTful:
+     - other than the RESTful protocols.
+       1. SOAP:
+	  - Sends data using the XML file format. This defines the message
+	    format with *Envelope, header ,body , fault*.
+	  - Focuses on action based services  executing the remote procedure calls rather than modifying
+	    the resources like the RESTful API.
+	  - More heavier than the REST.
+	  - May use HTTP or any other protocol to send the data.
+	  - May or may not have state , may contain session information in the message format
+
+
+
+  2. RESTful: Architectural style of communication protocol which  enables
+     sending data primarily using the HTTP methods like(GET,PUT,UPDATE,DELETE etc).
+
+     - lighter than SOAP .
+     - Uses mainly JSON or XML file formats.
+     - Each request from the client must contain all the information needed
+       to initiate and complete the task.
+     - No state is maintained.
+       -
+- Here, world wide web is the collection of web pages connected by hyperlinks.

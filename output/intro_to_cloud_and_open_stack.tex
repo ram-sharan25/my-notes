@@ -1,0 +1,202 @@
+% Created 2024-10-01 Tue 15:38
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\author{Ram Sharan Rimal  }
+\date{\today}
+\title{Intro to Cloud and Open Stack}
+\hypersetup{
+ pdfauthor={Ram Sharan Rimal  },
+ pdftitle={Intro to Cloud and Open Stack},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 29.4 (Org mode 9.6.15)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+
+\section{Cloud/Cloud Computing :}
+\label{sec:org2491399}
+\begin{itemize}
+\item Delivery of computing resources- platform , application to the datacenters
+on demand as pay per basis over the internet.
+\item Instead of owning the private servers companies can rent cloud servers to host
+their various services.
+\item makes business scalalble, effiecient, and reliable.
+\end{itemize}
+
+\subsection{Public Cloud :}
+\label{sec:org96a0960}
+\begin{itemize}
+\item Instead of storing the data and processing them in your local desktop machine
+you hire a company provide comuting power and   store data on their powerful
+servers and access via the web .
+\item This scheme of operation is of public cloud.
+\end{itemize}
+
+
+\subsection{Private Cloud:}
+\label{sec:org2e2a400}
+\begin{itemize}
+\item Instead of having the computation and storage on the employee desk companies
+buy big servers where all computation and storage is handled .
+\end{itemize}
+
+\subsection{Hybrid Cloud:}
+\label{sec:org9f0b3c0}
+\begin{itemize}
+\item partly public partly private
+\item 
+\end{itemize}
+
+\subsection{Cloud Service Models:}
+\label{sec:orgab7c08f}
+
+\subsubsection{Infrastructure as service:}
+\label{sec:orgba2c813}
+\begin{itemize}
+\item Here cloud provider provides servers, storage, network interfaces, firewalls
+as service to the user.
+\item Servers can be collection of VM or physical computers
+\item Databases stored as block or object storage and  can be accessed directly
+or via network drive  or as object via web interface.
+\item firewalls for protection of infrastructure is provided.
+\item User provides OS image and the application software .
+\item User is responsible to main the OS and their softwares
+\item Example: Amazon Elastic Compute Cloud (EC2)
+\end{itemize}
+
+\subsubsection{Platform as service:}
+\label{sec:orga78936a}
+\begin{itemize}
+\item Cloud service provider provides for complete computing platform along with un
+derlying hardware, server,Database ( block or object) , firewalls, network interface
+and also OS image. The platform is use ready for the User.
+\item User are to provide for the Application software and also responsible to
+maintain the application software.
+\item Provider is reponsible to main the platform that includes maintaince of servers,
+database, maintaining firewalls, also updating the OS Images.
+\item Examples: Amazon Web Services, Google App Engine , Elastic , Beanstalk
+\end{itemize}
+
+\subsubsection{Software as Service:}
+\label{sec:org8877629}
+\begin{itemize}
+\item Cloud Service Provider provides the hardware infrastructure, server, database,
+ ,underlying OS along with the Application installedin it . It is ready to use
+for the user.
+\item The role of the user is to use th application out of the box.
+\item Generally software is not bought but rented.
+\item Maintainence of platform and software fall under the responsibility of cloud
+provider.
+\item Example :
+\begin{enumerate}
+\item Dropbox
+\item Microsoft Office 365
+\end{enumerate}
+\end{itemize}
+
+
+\subsubsection{Intermediate Cloud Offerring:}
+\label{sec:orge2d1216}
+\begin{itemize}
+\item Provider which provides SaaS  PaaS ans IaaS operation as servicew offering
+\item Salesforce provides platform for developers to add on the main applications
+and also salesforce as software offerring.
+\item Microsoft Azure provides both IAAS ans PAAS as offerring.
+\end{itemize}
+
+\subsubsection{Why Cloud ? Why not Cloud ?}
+\label{sec:org38cc042}
+\begin{enumerate}
+\item Is cloud necessary ?
+\item Is it better to stay unclouded ?
+\item Is it viable to maintain private cloud ?
+\item Should tranfer to public cloud ?
+\end{enumerate}
+
+\subsubsection{Scenarios :}
+\label{sec:org6e948d0}
+\begin{itemize}
+\item Public Cloud Advantages :
+\begin{itemize}
+\item at starting of the business its always better to use public cloud , if a platform
+requires cloud services
+\item if a platform requires than public cloud is better choice as it becomes easy to
+scale, system is more reliable , no other maintainence, no additional staff
+, no extra financial burden to develop own facility buy servers.
+\item Also more security in public cloud , bugs  and vulnerability are identified
+and patche applied periodically, physically more secured, backups at multiple
+locations , easy to scale at a click of a button .
+\item proper security check for the cloud admins.
+\item Security Assestment and certifications.
+\item regulations of government.
+\end{itemize}
+\end{itemize}
+
+
+\begin{itemize}
+\item Private Cloud Advantage:
+\begin{itemize}
+\item if business is big enough then it is better to host on private cloud:
+\item better end to end control
+\item more realiable
+\item efficient systems
+\item less cost on long runs.
+\item improved user experience.
+\end{itemize}
+
+\item Cons of Public Cloud :
+\begin{itemize}
+\item Application may not require thee scalable.
+\item May be difficult  require or organize the application to make it ready for
+the cloud
+\item Even if it is possible to transfer it may not be viable as cost wise, maybe
+significant cost.
+\item Security is under the cloud responsibility which my be a risk for your
+application.
+\item Data may being mined
+\item Security admin may not be trusted.
+\item Physical location of data storage may be in foreign countries ( may not be
+firendly to own country).
+\item How can it be ensured that deleted is always deleted ?
+\item Data breach notification ?
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Cloud Providers:}
+\label{sec:orgc407e19}
+\begin{itemize}
+\item Amazon Web Services
+\item Microsoft Azure
+\item Verizon Terremark
+\item Google Compute Engine
+\end{itemize}
+
+\textbf{*}
+
+\textbf{*}
+
+\subsubsection{Docker Container :}
+\label{sec:org5d682d0}
+\begin{itemize}
+\item A docker is different from the virtual machine that it doesnot contain a
+operating system
+\end{itemize}
+
+\subsubsection{}
+\label{sec:org4e9dad5}
+\end{document}

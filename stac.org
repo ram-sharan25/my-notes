@@ -1,0 +1,27 @@
+:PROPERTIES:
+:ID:       E238AC8A-F157-44B7-9330-7535421F76CE
+:END:
+#+title: STAC
+
+- Stands for SpatioTemporal Asset Catalog
+- Standard of organizing and structuring the geospatial data in a way that makes easier to access , manage ,and discover .
+- Designed to catalogue the satellite imagery that have both spatial(geographical) and temporal (time) components in them.
+- KEY COMPONENTS :
+  1. STAC ITEMS :
+     - fundamental unit of stac , contains image and metadata associated with it
+     - The metadata contains information about the image(asset), its geographical footprint, time of capture, and links to the actual asset.
+     - image file is usually geotiff or jpeg file stored separately somewhere.
+     - The metadata has a href key which points to the location of the image file.
+  2. STAC Collection:
+     - Collection of same type of STAC items sharing same sensor source, type , place or time.
+  3. STAC Catalog :
+     - A standard to organize multiple STAC items or catalog or collections.
+     - This helps in oranizing or collecting many items form the same time, same place , or same data type in a single collection .
+     - Has metadata explaining the type of catalog, time, place, etc . also ref to the items of the catalog.
+Example of Stac
+
+#+DOWNLOADED: screenshot @ 2024-10-11 13:14:56
+#+attr_html: :width 800px
+#+attr_latex: :width 600cm
+#+attr_org: :width 100px
+[[file:data/stac/2024-10-11_13-14-56_screenshot.png]]

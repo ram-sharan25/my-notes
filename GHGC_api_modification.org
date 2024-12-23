@@ -1,0 +1,37 @@
+** Problems encountered during changing of API:
+
+- FileName: "emit-ch4plume-v1_User_Notebook.ipynb"
+  Internal server error while posting to this endpoint  https://earth.gov/ghgcenter/api/raster/cog/statistics
+  While I was trying to replicate it in insomnia with body of
+  
+ " {
+  "type": "Feature",
+  "properties": {},
+  "geometry": {
+    "coordinates": [
+      [
+        [-104.76285251117253, 39.85322425220504],
+        [-104.74658553556483, 39.85322425220504],
+        [-104.74658553556483, 39.86515336765068],
+        [-104.76285251117253, 39.86515336765068],
+        [-104.76285251117253, 39.85322425220504]
+      ]
+    ],
+    "type": "Polygon"
+  }
+  } "
+   with params as "url":"s3://lp-prod-protected/EMITL2BCH4PLM.001/EMIT_L2B_CH4PLM_001_20240728T095246_003386/EMIT_L2B_CH4PLM_001_20240728T095246_003386.tif" it threw
+   internal server error.
+  
+- FileName: "sedac-popdensity-yeargrid5yr-v4.11_User_Notebook.ipynb"
+  internal server error while trying to get data for Jan 2020 as well as for Jan 2000.
+
+- FileName: "vulcan-ffco2-yeargrid-v4_User_Notebook.ipynb"
+  issue:https://earth.gov/ghgcenter/api/stac/collections/{collection_Name} doesnot provide any data for "vulcan-ffco2-yeargrid-v4"
+  That breaks the whole program.
+
+  
+
+ 
+
+  

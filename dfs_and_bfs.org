@@ -1,0 +1,337 @@
+:PROPERTIES:
+:ID:      B90B86AA-9874-4F57-B2BC-E306FD3CC4E5
+:END:
+#+title: DFS and BFS
+
+* Introduction Exhaustive search
+- Combinatorial problems are those including permutations and combinations
+  ,with which the problem domain increases exponentailly.
+- To find a solution to a problem in these domain, Exhaustive Searches are used.
+- Many such problems are optimization problems where a path or cost is asked to find
+  where the domain of the problem contains combination and permutations
+  of the possible path.
+- Remember if there are lots of points and path  from A to B then finding
+  the shortest path is a combinatorial problem as it includes combinatation of
+  many short paths to reach from A to B.
+- They are the brute force approach for combinatorial problems.
+- It means generating each and every elements of the problem domain (generating
+  each path from A to B )  that satisfies all the contraints of the optimization
+  eg(length or cost of path) , and at last selecting desired element form it.
+- Examples of Exhaustive Search Problems includes :
+- Travelling Salesman Problem
+- Knapsack Problem
+- Assignment Problem
+
+* Travelling Salesman Problem :
+- In a short intro , It is to find the shortest  tour through a set of  n cities,
+  by travelling through each cities exactly once and returning to the starting
+  city.
+- If the cities can be represented as the vertex of a graph then the soltion
+  to this problems can be thought as finding the hamiltonian cycles.
+- Also the hamiltonian cycle will have n+1 vertices where first(0)  and last (n th)
+  will be the same vertices and all the other n-1 will be distinctly different
+  to each other.
+- Using Brute force to solve this is like finding all the combination of n-1
+  cities  and path among them , and from that find the shortest path.
+- While finding the path of the permutation of cities , path from a-b and
+  b-a are same so total no of possible paths is 1/2(n-1)! as n-1 distinct points
+  and 1/2 to remove the duplicacy.
+- Also if we remove the last element ( nth => which is similar to the first)
+  this increases the factor by n as there will be now n distinct points and
+  the permutation increases by n and becomes 1/2*n!;
+
+* KnapSack Problem :
+- It is defined as , given n items of weights w1,w2,w3,.....w_n and each has
+  values v1,v2,v3....v_n then we neeed to find the largest possible subsets of
+  valuable items that a knapsack of capacity W  can fill.
+- We need to find a subset of items whose weights doesnot exceed W and has the highest
+  value.
+- The exhaustive approach to solving this is finding the combination of all the possible
+  subsets of items and their corresponding weights.
+- Now the subsets with  weight lower than W and having the highest value is the solution to this problem.
+- But the catch is that there are 2^n possible  combination fo subsets  possible.
+- So the complexity of the algorith is Omega(2^n) as this will be the no of
+  possible subsets.
+
+* NP - Hard Problems
+- These two problems , travelling salesman and knapsack problems are examples
+   of NP-Hard problems.
+- No polunomial time solution are known for these algorithms.
+- It is also believed that no such algorithm exists( though not proven).
+- Complex approaches like backtracking , branch and bound can solve some instances of the
+  problem in less than exponential time.
+
+* Assignment Problem:
+- Assignment problems is defined as : There are n jobs and n people.
+- Each person is to be assigned a single job and single job is to be
+  assigned to a single person .
+- Also there is a cost of assigning ith person with jth job as C[i,j] = some value.
+- So we need to find the lowest possible cost after assigning these jobs to
+  every individual.
+- If there is a tuple  and each index of the tuple represents the person and
+  the value of tuple at each index is the index  of job assigned to them.
+- The solution of this assignment problem is to find the tuple with lowest possible
+  costs.
+- There are n elements in the tuple and each index can take n values.
+  so the permutation becomes n*n-1*..... 1
+- which is  also requires n! combination of jobs to n persons .
+- But for this there is a effective algorithm calles Hungarian Algorithm.
+
+*
+
+
+* DFS
+- Graph is generally represented as Adjacency Matrix or Adjacency List
+- Data Structure used is stack.
+- Traversal of the brave , goes to the depth first.
+
+** Outline
+
+- The algorithm is started from the begining or the root of the graph .
+- The next node to be visited is the adjacent nodes of the root node.
+- Among the adjacent nodes of the root , certain rule ( alphabetical order) is
+  employed in order to visit the vertices.
+- Before visiting the other adjacent node of root , the adjacent nodes
+  of the visiting node is visited as similar to vising the root node.
+- The algorithm ends when a visiting node has no adjacent unvisited  node to it
+  or the visiting node is the root node again.
+  - Gennerally by dashed line
+
+** Depth First Search Forest
+- Depth first search traversal is done by constructing Depth First Search Forest.
+- First the root node is taken and put as the root node of the forest.
+- Then whenever a new unvisited node is reached then it is kept as the child to
+  the node that was visited just before. The edge connecting them is called
+  **Tree Edge**
+- While visiting a node, if any node previously visited is reached from
+  the node then the edge called **Back Edge** is used to connect the previous
+  node and current node.
+  - Generally by dashed line
+- Generally DFS has two ordering of vertices, first at what order was it first
+  visited and second , in which order it was popped from the stack.
+- Used for checking adjacency and acyclicity of graph.
+- If starting from the vertex and upon halting, all the vertices are visited
+  then the graph is connected.
+- If the DFS has back edge ( i e if upon reaching a vertex , there is a separate
+  connection to one of its ancestors then it is a back edge) then the graph
+  is cyclic.
+- Efficiency is theta(V^2) or theta(V+E) ; As first its child node is discovered
+  and then it is explored, it is twice the total vertex.
+
+[[./Data/DFS and BFS/Forest.png][Forest]]
+
+
+***  Pseducode
+:PROPERTIES:
+:ID:       3549EABD-EBAF-4BEF-A275-BE2D65DE752E
+:END:
+
+#+BEGIN_EXAMPLE
+Algorithm: Depth First Search DFS(G)
+Input : Graph with vertices and Edges G<V,E>
+Output : Graph with the order of vertics in the order it was visited
+
+1:  mark each vertices in V  as 0, indicating "unvisited"
+2:  count <- 0
+3:  for i = 0 to totalVertices-1
+4:    if(i is not visited)
+5:      toVisit <- i
+6:    while (toVisit is not empty)
+7:      if i is not visited ;visited(i,true)
+8:	while (adjacent vertex of i)
+9:	  if( adjacent vertex not visited){
+10:	    add addjacent to queue
+11:	    break;
+12:	if(no child vertex)
+13:	  remove i from queue
+
+#+END_EXAMPLE
+
+#+begin_src c
+
+#include <iostream>
+#include "Graph.h"
+#include <vector>
+#include<stack>
+using namespace std;
+
+
+
+void depthFirstSearch(Graph* graph) {
+  graph->displayAdjacencyList();
+  int totalVertices = graph->getTotalVertices();
+  stack <int> toVisit;
+  vector <bool> visited(totalVertices,false);
+
+  for(int startVertex = 0;startVertex<totalVertices;startVertex++){
+    if(!visited[startVertex]){
+      //  cout<<"I added "<<startVertex<<" "<<endl;
+      toVisit.push(startVertex);
+    }
+    while(!toVisit.empty()){
+
+      int currentNode = toVisit.top();
+      // cout<<"I am in loop "<<currentNode<<" "<<endl;
+      if(!visited[currentNode]){
+	visited[currentNode]=true;
+	cout<<currentNode<<" ";
+	//	cout<<"Current node"<<currentNode<<" ";
+      }
+      Node* childNode = graph->getGraphNode(currentNode);
+      while (childNode!=nullptr){
+	//	cout<<"Looking at"<<childNode->vertex<<" is "<<visited[childNode->vertex]<<endl;
+	//	if(visited[childNode->vertex]) continue;
+	if(!visited[childNode->vertex]){
+	  toVisit.push(childNode->vertex);
+	  break;
+	}
+	childNode=childNode->next;
+      }
+      if(childNode==nullptr){
+	toVisit.pop();
+      }
+     }
+    }
+   cout<<endl;
+}
+
+
+int main(){
+
+  Graph x(10);
+  x.addEdge(0,2);h
+  x.addEdge(0,3);
+  x.addEdge(0,4);
+  x.addEdge(2,5);
+  x.addEdge(5,1);
+  x.addEdge(5,4);
+  x.addEdge(2,3);
+  x.addEdge(6,7);
+  x.addEdge(7,8);
+  x.addEdge(8,9);
+  x.addEdge(6,9);
+
+  depthFirstSearch(&x);
+}
+
+#+END SRC c
+
+
+** Breadth First Search
+- Traversal of the cautious.
+- Queue is used as the data structure as all the adjacent vertices are visited
+  turn by turn before jumping to another adjacent vertices
+- After adding adjacent vertices to the queue , front /parent vertex is removed
+  from the queue.
+- Whenever a new vertex is reached then the edge connecting the vertex reaching
+  from and that child vertes is called tree edge.
+- And if a edge connecting the current visiting child to previously visited
+  vertex then it is a cross edge,
+- Efficiency is theta(V^2) or theta(V+E) ; As first its child node is discovered
+  and then it is explored, it is twice the total vertex.
+- If starting from the vertex and upon halting, all the vertices are visited
+ then the graph is connected.
+- If the BFS has cross edge ( i e if upon reaching a vertex , there is a separate
+  connection to one of its ancestors then it is a back edge) then the graph
+  is cyclic.
+- BFS can also give the  fewer no of edge between two vertices .
+#+BEGIN_EXAMPLE
+  a-----b-----c-----d-----e
+  |     |     |     |     |
+  |     |     |     |     |
+  f-----g-----h-----i-----j
+#+END_EXAMPLE
+- BFS can give the simple path with fewer no of edges from a-e as a-b-c-d-e.
+
+**
+
+***
+*** Pseudocode
+#+BEGIN_EXAMPLE
+Algorithm: Breadth First Search DFS(G)
+Input : Graph with vertices and Edges G<V,E>
+Output : Graph with the order of vertics in the order it was visited by the \\
+	  BFS Traversal
+
+1:  mark each vertices in V  as 0, indicating "unvisited"
+2:  count <- 0
+3:  for each vertices do:
+4:    if v in V marked with 0
+5:       bfs(v)
+6:  bfs(v)
+7:  count<- count+1
+8:  while the queue is not empty do
+9:    for each vertex w in V adjacent to the front vertex do
+10:     if w is marked with 0
+11:       count<-count+1
+12:       add w to the queue
+13:   remove the front vertex from the queue
+
+#+END_EXAMPLE
+
+
+#+begin_src c
+#include <iostream>
+#include "Graph.h"
+#include <queue>
+#include<vector>
+using namespace std;
+
+
+
+void breadthFirstSearch(Graph* graph) {
+  graph->displayAdjacencyList();
+  int totalVertices = graph->getTotalVertices();
+  queue <int> toVisit;
+  vector <bool> visited(totalVertices,false);
+  for(int startVertex = 0;startVertex<totalVertices;startVertex++){
+
+    if(visited[startVertex]) continue;
+
+    //add the current index to the queue
+    toVisit.push(startVertex);
+
+    //complete the search if there are no vertex to be explored
+    while (!(toVisit.empty())){
+      int currentIndex = toVisit.front();
+      toVisit.pop();
+      //if the vertex is already visited
+      if(!visited[currentIndex]){
+	//mark the current vertex as visited
+	visited[currentIndex]= true;
+	cout<<currentIndex<<" ";
+	//get the adjacent vertices
+	Node * neighbour = graph->getGraphNode(currentIndex);
+	while(neighbour!=nullptr){
+	  if(!visited[neighbour->vertex]){
+	    toVisit.push(neighbour->vertex);
+	  }
+	  neighbour=neighbour->next;
+	}
+      }
+    }
+  }
+  cout<<endl;
+}
+
+
+int main(){
+
+  Graph x(10);
+  x.addEdge(0,2);
+  x.addEdge(0,3);
+  x.addEdge(0,4);
+  x.addEdge(2,5);
+  x.addEdge(5,1);
+  x.addEdge(5,4);
+  x.addEdge(2,3);
+  x.addEdge(6,7);
+  x.addEdge(7,8);
+  x.addEdge(8,9);
+  x.addEdge(6,9);
+
+  breadthFirstSearch(&x);
+
+
+}
+#+end_src c

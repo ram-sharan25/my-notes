@@ -1,0 +1,23 @@
+:PROPERTIES:
+:ID:       5D19942E-D964-47BB-ACF9-368840EA232A
+:END:
+#+title: Basics of Machine Learning
+
+
+
+- Based on the data and learning .
+
+- If the labelled data is provided then it is supervised learning.
+
+
+- If the lebelled data not provided then unsupervised learning.
+
+Based on the type of learning
+/ -
+Supervised Unsupervised
+Where labelled data is (where label is not
+provided -I providedBased on the type of learning
+/ -
+Supervised Unsupervised
+Where labelled data is (where label is not
+provided -I provided
